@@ -17,26 +17,29 @@ Create a simple web application that monitors load average on your machine:
 
 - `agent/`: the agent's code. The agent runs on the target system and collects the data
 - `docs/`: all the docs explaining the architecture, the features, howtos...
-- `scripts`: useful scripts to run the application
 - `server/` the server's code. The server connects to the agent to receive the collected data and exposes various endpoints to the webapp
 - `web/` the webapp's code. The webapp renders the collected data in a user friendly way.
 
 ## Getting started
 
-### Prerequisits
+### Prerequisites
 
 - node.js 5.8.0+
 - recent Chrome (tested on Canary 51)
 
 ### Running the application
 
-The simplest way is to execute the start script:
+The application is composed of two modules. There's a lot to read in the respective READMEs, but here's a summary:
 
-`./scripts/start.sh`
+1. The `agent`, which runs on the target system to collect the data
+2. The `server`, which serves the webapp assets and crunches the data for the presentation layer
 
-If you've just downloaded the repository, start by running the install script:
+They are developed to be installed on separate machines, but to make things easier, they can be installed and executed on the same machine using `npm` scripts:
 
-`./scripts/install.sh`
+1. `npm install` in this directory will recursively install `agent/` and `server/` by pulling the dependencies
+2. `npm run start` in this directory will recursively start both the agent and the server on port `localhost:8000`. The url and port can be configured in each application's folder.
+
+When both have started, you will be able to load your browser and navigate to `http://localhost:8000`
 
 ### License
 

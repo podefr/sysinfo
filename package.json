@@ -1,0 +1,20 @@
+{
+  "name": "datadog-coding-challenge",
+  "version": "0.0.1-alpha",
+  "description": "Take home coding challenge for Datadog",
+  "main": "README.md",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "cd agent/; npm run start; cd ../server/; npm run start &",
+    "install": "cd agent/; npm install; cd ../server/; npm install"
+  },
+  "keywords": [
+    "datadog",
+    "coding",
+    "challenge"
+  ],
+  "author": "Olivier Scherrer",
+  "license": "MIT"
+}
