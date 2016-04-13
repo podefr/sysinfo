@@ -8,3 +8,4 @@ List of future features
 - Configure/save timezone in settings for dates
 - Setting/permission based dashboard
 - Spin up extra servers to get data from a given agent and use a load balancer to toggle between them and distribute the load
+- Configure alerts so that they're triggered earlier/later or using a different load average value (based on number of CPU?)
