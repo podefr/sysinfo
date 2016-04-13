@@ -12,7 +12,8 @@ function executeJobs() {
 module.exports = {
     start: function start(interval) {
         if (!running) {
-            setInterval(executeJobs, interval);
+            schedulerHandle = setInterval(executeJobs, interval);
+            running = true;
         }
     },
 
@@ -24,6 +25,9 @@ module.exports = {
     },
 
     stop: function stop() {
+        if (running) {
+            clearInterval(schedulerHandle);
+        }
     }
 
 };
