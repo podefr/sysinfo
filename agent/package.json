@@ -1,0 +1,13 @@
+{
+  "name": "agent",
+  "version": "0.0.1-dev",
+  "description": "The agent to be installed on the host machine",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exec": "node index.js"
+  },
+  "author": "Olivier Scherrer",
+  "license": "MIT"
+}
