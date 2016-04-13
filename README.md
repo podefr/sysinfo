@@ -12,3 +12,32 @@ Create a simple web application that monitors load average on your machine:
 - Make sure all messages showing when alerting thresholds are crossed remain visible on the page for historical reasons.
 - Write a test for the alerting logic
 - Explain how you’d improve on this application design
+
+## In this repository:
+
+- `agent/`: the agent's code. The agent runs on the target system and collects the data
+- `docs/`: all the docs explaining the architecture, the features, howtos...
+- `scripts`: useful scripts to run the application
+- `server/` the server's code. The server connects to the agent to receive the collected data and exposes various endpoints to the webapp
+- `web/` the webapp's code. The webapp renders the collected data in a user friendly way.
+
+## Getting started
+
+### Prerequisits
+
+- node.js 5.8.0+
+- recent Chrome (tested on Canary 51)
+
+### Running the application
+
+The simplest way is to execute the start script:
+
+`./scripts/start.sh`
+
+If you've just downloaded the repository, start by running the install script:
+
+`./scripts/install.sh`
+
+### License
+
+MIT
