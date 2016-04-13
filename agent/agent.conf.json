@@ -1,0 +1,9 @@
+{
+  "MODULES": {
+    "loadavg": {
+      "configuration": {
+        "POLLING_FREQUENCY_S": 10
+      }
+    }
+  }
+}

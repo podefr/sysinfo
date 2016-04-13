@@ -2,7 +2,7 @@
 
 ## [Agent]
  - [X] AGENT-01 Bootstrap agent, add package.json with install and run scripts
- - [ ] AGENT-02 Add module to get the load average from "uptime"
+ - [X] AGENT-02 Add module to get the load average from "uptime"
  - [ ] AGENT-03 Expose stats to outside world
  - [ ] AGENT-04 Run agent with mock data for testing/demo
 

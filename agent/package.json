@@ -9,5 +9,8 @@
     "exec": "node index.js"
   },
   "author": "Olivier Scherrer",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.4.1"
+  }
 }

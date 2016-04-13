@@ -1,0 +1,3 @@
+{
+  "LOAD_AVG_PATTERN": "load averages: (.+)"
+}

@@ -2,17 +2,17 @@
 
 console.log("Starting agent");
 
-const configuration = require("./agent.conf");
+const configuration = require("./agent.conf.json");
 
-configuration.MODULES.forEach(function (path) {
-    console.log(`Loading module ${path}`);
+Object.keys(configuration.MODULES).forEach(function (moduleName) {
+    console.log(`Loading module ${moduleName}`);
 
-    const module = require(`./${path}/index`);
+    const module = require(`./${moduleName}/index`);
 
     try {
-        module.init();
+        module.init(configuration.MODULES[moduleName].configuration);
     } catch (e) {
-        console.error(`Cannot initialize module ${path}, make sure it has an init function. [link to error documentation]`);
+        console.error(`Cannot initialize module ${moduleName}, make sure it has an init function. [link to error documentation]`);
         throw new Error(e);
     }
 });
