@@ -11,8 +11,13 @@ module.exports = {
         function emitLoadAverage() {
             stats.getLoadAverage()
                 .then(loadAverage => {
-                    console.log("load average", loadAverage);
-                    socket.emit("current", loadAverage);
+                    const data = {
+                        loadAverage: loadAverage,
+                        time: new Date()
+                    };
+
+                    console.log("load average", data);
+                    socket.emit("current", data);
                 })
                 .fail(error => console.error(error));
         }
