@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.0.1-alpha",
+  "description": "The server computes the data coming from an agent to prepare for the presentation layer",
+  "main": "index.js",
+  "dependencies": {
+    "socket.io": "^1.4.5",
+    "socket.io-client": "^1.4.5"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "scripts": {
+    "test": "jasmine-node ./",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "server"
+  ],
+  "private": true,
+  "author": "Olivier Scherrer",
+  "license": "MIT"
+}

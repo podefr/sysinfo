@@ -7,11 +7,11 @@
  - [ ] AGENT-04 Run agent with mock data for testing/demo
 
 ## [Server]
- - [ ] SERVER-01 Bootstrap server, add package.json with install and run scripts
+ - [X] SERVER-01 Bootstrap server, add package.json with install and run scripts
  - [ ] SERVER-02 Add module to compute alerts for load average
  - [ ] SERVER-03 Add route to get load average 
  - [ ] SERVER-04 Add route to get alerts
- - [ ] SERVER-05 Serve webapp and assets 
+ - [ ] SERVER-05 Serve webapp and assets
 
 ## [Webapp]
  - [ ] WEBAPP-01 Bootstrap webapp, add package.json, install scripts

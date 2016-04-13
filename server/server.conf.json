@@ -1,0 +1,14 @@
+{
+  "AGENT": {
+    "URL": "http://localhost",
+    "PORT": 8000
+  },
+  "SERVER": {
+    "MODULES": {
+      "loadavg": {
+
+      }
+    }
+
+  }
+}

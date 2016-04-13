@@ -2,7 +2,7 @@
 
 ## How to run agent
 
-From `agent`, run `npm run exec`. You should see
+From `agent`, run `npm run start`. You should see
 
 ```
 > agent@0.0.1-dev exec /Users/olivierscherrer/Documents/workspace/datadog/agent
