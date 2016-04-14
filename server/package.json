@@ -4,6 +4,8 @@
   "description": "The server computes the data coming from an agent to prepare for the presentation layer",
   "main": "index.js",
   "dependencies": {
+    "baconjs": "^0.7.84",
+    "moment": "^2.12.0",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5"
   },

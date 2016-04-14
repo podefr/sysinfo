@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Cerberus - System monitoring</title>
+    </head>
+    <body>
+        Welcome to Cerberus
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io(`${window.location.hostname}:${window.location.port}/loadavg`);
+
+            socket.on("current", loadavg => console.log(loadavg));
+        </script>
+    </body>
+</html>
+

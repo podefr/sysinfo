@@ -4,6 +4,8 @@
     "PORT": 8000
   },
   "SERVER": {
+    "PORT": 8001,
+    "INDEX_PATH": "../web/public/index.html",
     "MODULES": {
       "loadavg": {
 

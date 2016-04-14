@@ -1,9 +1,21 @@
 "use strict";
 
+const bacon = require("baconjs");
+const moment = require("moment");
+
 module.exports = {
-  init: function init(socket, configuration) {
-      socket.on("current", function (loadAverage) {
-          console.log("got load average", loadAverage);
+  init: function init(agentSocket, serverSocket, configuration) {
+      const stream = bacon.fromBinder(sink => {
+          agentSocket.on("current", loadAverage => {
+              sink(new bacon.Next(loadAverage));
+          });
       });
+
+      stream
+          .map(event => {
+              serverSocket.emit("current", event);
+              return event;
+          })
+          .log();
   }
 };
