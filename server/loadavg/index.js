@@ -6,75 +6,30 @@ const moment = require("moment");
 const statsStore = require("./statsStore");
 const alertsStore = require("./alertsStore");
 
+const Alerts = require("Alerts");
+
 module.exports = {
     init: function init(agentSocket, serverSocket, configuration) {
         const stream = createStream(agentSocket);
+        const alerts = new Alerts(stream, broadcastToClient("alert", serverSocket));
+
+        alerts.setThreshold(1);
+        alerts.setAverageTimeWindow(2, "minutes");
+
+        alerts
+            .init()
+            .doAction(saveToStore(alertsStore));
 
         stream
-            .map(saveToStore(statsStore))
-            .map(broadcastToClient(serverSocket))
-            .log();
-
-        const startDate = moment().unix();
-
-        const hasNotEnoughData = stream.map(data => {
-            return startDate > moment(data.time).subtract(2, "minutes").unix();
-        }).toProperty();
-
-        stream
-            .map(extractCurrentLoadAverage)
-            .scan([], accumulateLoadAverage)
-            .toEventStream()
-            .map(calculateAverage)
-            .skipWhile(hasNotEnoughData)
-            .map(computeAlert)
-            .skipDuplicates()
-            .skipWhile(cantTriggerAlert)
-            .map(triggerAlert)
+            .doAction(saveToStore(statsStore))
+            .doAction(broadcastToClient("current", serverSocket))
             .log();
 
         serverSocket.on("connect", _ => {
+            // send snapshots!!!
         });
     }
 };
-
-function calculateAverage(accumulatedLoadAverage) {
-    const sum = accumulatedLoadAverage.reduce((sum, item) => sum + item.currentLoadAverage, 0);
-
-    return sum / accumulatedLoadAverage.length;
-}
-
-function cantTriggerAlert(alert) {
-    return alert === "noalert";
-}
-
-function computeAlert(average) {
-    if (average >= 2) {
-        return "alert";
-    } else {
-        return "noalert";
-    }
-}
-
-function triggerAlert(alert) {
-    return alert;
-}
-
-function isOlderThanLimit(time) {
-    return moment(time).unix() < moment().subtract(2, "minutes").unix();
-}
-
-function extractCurrentLoadAverage(data) {
-    return {
-        currentLoadAverage: data.loadAverage[0],
-        time: data.time
-    }
-}
-
-function accumulateLoadAverage(acc, data) {
-    acc.push(data);
-    return acc.filter(item => !isOlderThanLimit(item.time));
-}
 
 function createStream(agentSocket) {
     return bacon.fromBinder(sink => {
@@ -84,16 +39,14 @@ function createStream(agentSocket) {
     });
 }
 
-function broadcastToClient(serverSocket) {
+function broadcastToClient(serverSocket, eventName) {
     return event => {
-        serverSocket.emit("current", event);
-        return event;
+        serverSocket.emit(eventName, event);
     };
 }
 
 function saveToStore(store) {
     return data => {
         store.insert(data);
-        return data;
     }
 }

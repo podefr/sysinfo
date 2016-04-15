@@ -14,11 +14,11 @@ const moment = require("moment");
  */
 module.exports = function Alerts(stream, onAlert) {
     if (!stream) {
-        throw new Error("Alerts requires a Bacon stream when instanciated");
+        throw new Error("Alerts requires a Bacon stream when instantiated");
     }
 
     if (typeof onAlert !== "function") {
-        throw new Error("Alerts requires an onAlert callback when instanciated");
+        throw new Error("Alerts requires an onAlert callback when instantiated");
     }
 
     const ALERT_RAISED = "ALERT_RAISED";
@@ -94,7 +94,7 @@ module.exports = function Alerts(stream, onAlert) {
 
         let hasNotEnoughData = getNotEnoughDataProperty(stream);
 
-        stream
+        return stream
             .scan([], accumulateLoadAverage)
             .toEventStream()
             .map(calculateAverage)
@@ -102,7 +102,7 @@ module.exports = function Alerts(stream, onAlert) {
             .map(computeAlert)
             .skipDuplicates()
             .skipWhile(cantTriggerAlert)
-            .map(_onAlert)
+            .doAction(_onAlert)
             .log();
     };
 
