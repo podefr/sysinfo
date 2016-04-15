@@ -106,27 +106,53 @@ module.exports = function Alerts(stream, onAlert) {
             .log();
     };
 
+    /**
+     * Get a Bacon property that tells if the data is old enough to cover the time window
+     * @param stream
+     * @returns {BaconProperty} a bacon property that evaluates to true if the data doesn't cover the time window
+     */
     function getNotEnoughDataProperty(stream) {
         return stream.map(data => {
             return _startDate > moment(data.time).subtract(_timeWindow[0], _timeWindow[1]).unix();
         }).toProperty();
     }
 
+    /**
+     * Accumulate load average events and discards the ones that are older than the time window
+     * @param {Array} accumulator the accumulator to accumulate load averages
+     * @param {Object} data each load average event
+     * @returns {Array} the accumulator
+     */
     function accumulateLoadAverage(accumulator, data) {
         accumulator.push(data);
         return accumulator.filter(item => !isOlderThanLimit(item.time));
     }
 
+    /**
+     * Calculate the average of current load averages on the moving time window
+     * @param {Array} accumulatedLoadAverage the accumulated load averages in the time window
+     * @returns {Number} the average of the load averages
+     */
     function calculateAverage(accumulatedLoadAverage) {
         const sum = accumulatedLoadAverage.reduce((sum, item) => sum + item.loadAverage[0], 0);
 
         return sum / accumulatedLoadAverage.length;
     }
 
+    /**
+     * Tells if a date is older than the time window
+     * @param {IsoDate} time an iso date
+     * @returns {boolean} true if the given time is older than the time window
+     */
     function isOlderThanLimit(time) {
         return moment(time).unix() < moment().subtract(_timeWindow[0], _timeWindow[1]).unix();
     }
 
+    /**
+     * Creates an alert object based on the average
+     * @param {Number} average the load average average
+     * @returns {{load: *, time: *, type: string}}
+     */
     function computeAlert(average) {
         return {
             load: average,
@@ -135,6 +161,11 @@ module.exports = function Alerts(stream, onAlert) {
         };
     }
 
+    /**
+     * Tells if the stream of alerts can be unlocked
+     * @param {Object} alert an alert object
+     * @returns {boolean} true if it's a cleared alert
+     */
     function cantTriggerAlert(alert) {
         return alert.type === ALERT_CLEARED;
     }
