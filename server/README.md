@@ -29,6 +29,8 @@ Edit `server.conf.json`:
 
 1. Just like for the agent, the modules are checked-in inside the server folder but they should really be separate modules that would
  evolve independently. We should also be able to update, load/unload them separately.
+2. For simplicity, the data collected from the agent is stored in the server's memory and not in a dedicated data layer.
+
  
 ## Running the tests
 

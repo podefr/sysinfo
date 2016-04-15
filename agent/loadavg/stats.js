@@ -8,7 +8,8 @@ const configuration = require("./loadavg.conf.json");
 function extractLoadAverage(uptimeString) {
     return uptimeString
         .match(new RegExp(configuration.LOAD_AVG_PATTERN))[1]
-        .split(" ");
+        .split(" ")
+        .map(Number);
 }
 
 module.exports = {
