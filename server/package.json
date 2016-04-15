@@ -13,7 +13,7 @@
     "jasmine-node": "^1.14.5"
   },
   "scripts": {
-    "test": "jasmine-node ./",
+    "test": "jasmine-node ./ --verbose",
     "start": "node index.js"
   },
   "keywords": [
