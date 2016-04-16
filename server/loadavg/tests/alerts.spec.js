@@ -3,7 +3,7 @@
 const Bacon = require("baconjs").Bacon;
 const moment = require("moment");
 
-const Alerts = require("../Alerts");
+const Alerts = require("../alerts/Alerts");
 
 describe("Given a load average stream And an onAlert callback", () => {
     let stream;

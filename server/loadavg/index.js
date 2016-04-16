@@ -2,10 +2,10 @@
 
 const Bacon = require("baconjs").Bacon;
 
-const statsStore = require("./statsStore");
-const alertsStore = require("./alertsStore");
+const statsStore = require("./stores/statsStore");
+const alertsStore = require("./stores/alertsStore");
 
-const Alerts = require("./Alerts");
+const Alerts = require("./alerts/Alerts");
 
 module.exports = {
     init: function init(agentSocket, serverSocket, configuration) {

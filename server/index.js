@@ -21,18 +21,22 @@ function startModules() {
    Object.keys(configuration.SERVER.MODULES).forEach(moduleName => {
       const moduleConfiguration = configuration.SERVER.MODULES[moduleName];
       const module = require(`./${moduleName}/index`);
-      const moduleRoutes = require(`./${moduleName}/${moduleName}.conf.json`).ROUTES;
+      const moduleLevelConfiguration = require(`./${moduleName}/config/${moduleName}.conf.json`);
 
       module.init(connectToAgent(moduleName), serverSocket.of(`${moduleName}`), moduleConfiguration);
 
-      Object.keys(moduleRoutes).forEach(routeName => {
-         const methodName = moduleRoutes[routeName];
+      if (moduleLevelConfiguration && moduleLevelConfiguration.ROUTES) {
+         let moduleRoutes = moduleLevelConfiguration.ROUTES;
 
-         if (typeof module[methodName] !== "function") {
-            throw new Error(`No handler ${moduleName}.${methodName} found for route ${moduleName}/${routeName}`);
-         }
-         application.get(`/${moduleName}/${routeName}`, module[methodName].bind(module));
-      });
+         Object.keys(moduleRoutes).forEach(routeName => {
+            const methodName = moduleRoutes[routeName];
+
+            if (typeof module[methodName] !== "function") {
+               throw new Error(`No handler ${moduleName}.${methodName} found for route ${moduleName}/${routeName}`);
+            }
+            application.get(`/${moduleName}/${routeName}`, module[methodName].bind(module));
+         });
+      }
 
       console.log(`${moduleName} started`);
    });
