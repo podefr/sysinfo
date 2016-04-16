@@ -43,7 +43,19 @@ Edit `server.conf.json`:
  configuration that's defined at a server level.
 4. You can also add `ROUTES` to each server module. For instance: `"ROUTES": { "get-data": "getData" }` will call the `module.getData(req, res)`
  function when the client makes a request on `/rest/{moduleName}/get-data`. 
+ 
+### How to get the module to expose routes
 
+In the module's `config/{moduleName}.conf.json`, add a `"ROUTES"` object. This object needs to tell the routes `url` and the name of the method
+ that will be called when hitting the route. For example with the `loadavg` module:
+  
+```json
+"ROUTES" : {
+ "get-load-averages": "getLoadAverages"
+}
+```
+
+This means that when calling `rest/loadavg/get-load-averages`, the `getLoadAverages` method will be called with `request, response`.
  
 ## Running the tests
 
