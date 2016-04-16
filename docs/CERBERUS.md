@@ -1,6 +1,6 @@
 # Cerberus
 
-Cerberus is the name of the web client/framework that's used to render data coming from the client.
+Cerberus is the name of the web client/framework that's used to render data coming from the server.
 
 ## Cerberus framework
 

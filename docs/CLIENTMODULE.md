@@ -11,3 +11,30 @@ Client modules are external modules that can be "dropped" into the application (
 
 `manifest.json` tells Cerberus what the module needs from the framework. Cerberus can then make educated decisions based on various criteria and entitlements.
 The manifest also describes the modules public API that other modules can used (inter-module communication).
+
+Example manifest:
+
+```json
+{
+  "name": "loadavg",
+  "description": "Renders load average over a period of time",
+  
+  // The entry point to the module. It needs to have an init() method
+  "entry": "index.js",
+  
+  // How to tell cerberus what the module needs to work and what it exposes
+  "cerberus": {
+    "UIElements": ["lineChart"],
+    "routes": ["loadavg"],
+    "exposes": []
+  },
+  
+  // The module's configuration itself. This is a blog that's just passed to the init() method.
+  "configuration": {
+    "timeWindow": {
+      "number": 10,
+      "unit": "minutes"
+    }
+  }
+}
+```
