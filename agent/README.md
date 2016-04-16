@@ -12,10 +12,9 @@ Starting agent
 Starting server on port 8000
 Loading module loadavg
 Start polling load average
-load average [ '1.33', '1.56', '1.57' ]
 New client connected on loadavg
-load average [ '1.55', '1.60', '1.58' ]
-load average [ '1.66', '1.62', '1.59' ]
+load average { loadAverage: [ 1.79, 1.29, 1.02 ],
+  time: Fri Apr 15 2016 23:22:20 GMT-0400 (EDT) }
 ```
 
 ## Configuration

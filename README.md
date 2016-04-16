@@ -41,6 +41,16 @@ They are developed to be installed on separate machines, but to make things easi
 
 When both have started, you will be able to load your browser and navigate to `http://localhost:8000`
 
+### Tech stack
+
+The application is running on `node.js` and `ES6` is used where possible.
+
+It's using `socket.io` for communication between `agent`, `server` and `webclient`.
+The `server` is using `express` to route `REST` calls.
+The `webclient` is using `D3` for charting and the `Olives` MVC framework that I've also authored.
+It's using `moment` for data manipulation and `Bacon.js` for streams.
+
+
 ### License
 
 MIT
