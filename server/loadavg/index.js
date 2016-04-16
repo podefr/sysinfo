@@ -23,10 +23,6 @@ module.exports = {
         stream
             .doAction(saveToStore(statsStore))
             .doAction(broadcastToClient("current", serverSocket));
-
-        serverSocket.on("connect", _ => {
-            // send snapshots!!!
-        });
     }
 };
 
