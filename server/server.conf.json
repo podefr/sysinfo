@@ -5,7 +5,7 @@
   },
   "SERVER": {
     "PORT": 8001,
-    "INDEX_PATH": "../web/public/index.html",
+    "INDEX_PATH": "../web/public",
     "MODULES": {
       "loadavg": {
         "THRESHOLD": 1,

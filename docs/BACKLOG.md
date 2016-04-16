@@ -43,3 +43,7 @@
  
 ## [RESPONSIVE]
  - [ ] RESPONSIVE-01 Add tabs to toggle between alerts and load average chart when window size reduces
+ 
+## [DEFECTS/TECH DEBT]
+ - [ ] TECHDEBT-01 The server doesn't trigger event on the client web socket without the .log() in the streams
+ - [ ] DEFECT-01 in alerts.specs.js, Bacon.fromBinder doesn't call the callback

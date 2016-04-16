@@ -34,7 +34,7 @@ function startModules() {
                 if (typeof module[methodName] !== "function") {
                     throw new Error(`No handler ${moduleName}.${methodName} found for route ${moduleName}/${routeName}`);
                 }
-                application.get(`/${moduleName}/${routeName}`, module[methodName].bind(module));
+                application.get(`/rest/${moduleName}/${routeName}`, module[methodName].bind(module));
             });
         }
 
@@ -56,9 +56,7 @@ function connectToAgent(moduleName) {
 function startWebServer() {
     const port = configuration.SERVER.PORT;
 
-    application.get("/", (request, response) => {
-        response.sendFile(path.resolve(`${__dirname}/${configuration.SERVER.INDEX_PATH}`));
-    });
+    application.use(express.static(path.resolve(`${__dirname}/${configuration.SERVER.INDEX_PATH}`)));
 
     server.listen(port);
     console.log(`Web server running on http://localhost:${port}`);

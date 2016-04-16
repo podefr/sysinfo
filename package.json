@@ -16,6 +16,12 @@
     "coding",
     "challenge"
   ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "es6": true
+    }
+  },
   "author": "Olivier Scherrer",
   "license": "MIT"
 }

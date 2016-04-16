@@ -42,7 +42,7 @@ Edit `server.conf.json`:
  a WebSocket to push data to the web client (both are namespaced so they will only get and push data for their own module), and some extra
  configuration that's defined at a server level.
 4. You can also add `ROUTES` to each server module. For instance: `"ROUTES": { "get-data": "getData" }` will call the `module.getData(req, res)`
- function when the client makes a request on `{moduleName}/get-data`. 
+ function when the client makes a request on `/rest/{moduleName}/get-data`. 
 
  
 ## Running the tests
