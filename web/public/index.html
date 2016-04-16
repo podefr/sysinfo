@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cerberus - System monitoring</title>
+        <title>Cerberus • System monitoring</title>
         <link rel="stylesheet" href="assets/index.css">
     </head>
     <body>
-        Welcome to Cerberus
+        <h1>Welcome to Cerberus</h1>
+
+        <section data-modules="general">
+
+        </section>
+
+        <section data-module="cpu">
+
+        </section>
+
+        <section data-module="loadavg">
+            <div class="load-averages">
+
+            </div>
+
+            <div class="alerts">
+
+            </div>
+        </section>
+
+        <section data-module="notifications">
+            <div class="notifications">
+
+            </div>
+        </section>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="assets/index.js"></script>

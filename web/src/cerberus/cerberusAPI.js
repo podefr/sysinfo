@@ -17,7 +17,11 @@ function CerberusAPI(name, UIElements, sockets) {
         }
 
         return sockets[socketName];
-    }
+    };
+
+    this.getDom = function getDom() {
+      return document.querySelector(`[data-module="${name}"]`);
+    };
 }
 
 module.exports = {

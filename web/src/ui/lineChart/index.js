@@ -1,6 +1,6 @@
 "use strict";
 
-//const d3 = require("d3");
+let d3 = require("d3");
 
 module.exports = function LineChart() {
     let minDomain = 0;
@@ -29,12 +29,12 @@ module.exports = function LineChart() {
 
     this.render = function render(dom) {
         if (!dom) {
-            throw new Error("LineChart requires a dom element to e rendered");
+            throw new Error("LineChart requires a DOM element to be rendered");
         }
         _scale = createScale();
 
-        dom.append("svg:svg");
-
+        d3.select(dom)
+            .append("svg:svg");
 
     };
 

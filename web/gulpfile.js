@@ -1,14 +1,13 @@
 "use strict";
 
-const babel = require("gulp-babel");
-const buffer = require('vinyl-buffer');
+const buffer = require("vinyl-buffer");
 const browserify = require("browserify");
 const eslint = require("gulp-eslint");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
 const gulpKarmaRunner = require("gulp-karma-runner");
 const sass = require("gulp-sass");
-const source = require('vinyl-source-stream');
+const source = require("vinyl-source-stream");
 const sourcemaps = require("gulp-sourcemaps");
 
 gulp.task("default", ["package"]);
@@ -56,18 +55,18 @@ gulp.task("karma-runner", () => {
 
 gulp.task("compile", () => {
     let compileBrowserify = browserify({
-        entries: './src/index.js',
+        entries: "./src/index.js",
         debug: true
     });
 
-    return compileBrowserify.bundle()
-        .pipe(source('index.js'))
+    return compileBrowserify
+        .bundle()
+        .pipe(source("index.js"))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(babel())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./public/assets/'));
+        .on("error", gutil.log)
+        .pipe(sourcemaps.write("./"))
+        .pipe(gulp.dest("./public/assets/"));
 });
 
 gulp.task("compile:watch", () => {
