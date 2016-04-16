@@ -1,29 +1,28 @@
 "use strict";
 
-const bacon = require("baconjs");
-const moment = require("moment");
+const Bacon = require("baconjs").Bacon;
 
 const statsStore = require("./statsStore");
 const alertsStore = require("./alertsStore");
 
-const Alerts = require("Alerts");
+const Alerts = require("./Alerts");
 
 module.exports = {
     init: function init(agentSocket, serverSocket, configuration) {
         const stream = createStream(agentSocket);
-        const alerts = new Alerts(stream, broadcastToClient("alert", serverSocket));
-
-        alerts.setThreshold(1);
-        alerts.setAverageTimeWindow(2, "minutes");
+        const alerts = new Alerts(stream);
 
         alerts
-            .init()
-            .doAction(saveToStore(alertsStore));
+            .setThreshold(1)
+            .setAverageTimeWindow(2, "minutes")
+            .startComputing()
+            .doAction(saveToStore(alertsStore))
+            .doAction(broadcastToClient("alert", serverSocket))
+            .log();
 
         stream
             .doAction(saveToStore(statsStore))
-            .doAction(broadcastToClient("current", serverSocket))
-            .log();
+            .doAction(broadcastToClient("current", serverSocket));
 
         serverSocket.on("connect", _ => {
             // send snapshots!!!
@@ -32,14 +31,14 @@ module.exports = {
 };
 
 function createStream(agentSocket) {
-    return bacon.fromBinder(sink => {
+    return Bacon.fromBinder(sink => {
         agentSocket.on("current", loadAverage => {
             sink(new bacon.Next(loadAverage));
         });
     });
 }
 
-function broadcastToClient(serverSocket, eventName) {
+function broadcastToClient(eventName, serverSocket) {
     return event => {
         serverSocket.emit(eventName, event);
     };

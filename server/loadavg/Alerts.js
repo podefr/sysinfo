@@ -1,6 +1,5 @@
 "use strict";
 
-const bacon = require("baconjs");
 const moment = require("moment");
 
 /**
@@ -9,16 +8,11 @@ const moment = require("moment");
  * then an alert is triggered. When the average goes back below 1, the alert is lifted.
  *
  * @param {Stream} stream a bacon stream to get the load averages from
- * @param {Function} onAlert a callback to be called when an alert triggers
  * @constructor
  */
-module.exports = function Alerts(stream, onAlert) {
+module.exports = function Alerts(stream) {
     if (!stream) {
         throw new Error("Alerts requires a Bacon stream when instantiated");
-    }
-
-    if (typeof onAlert !== "function") {
-        throw new Error("Alerts requires an onAlert callback when instantiated");
     }
 
     const ALERT_RAISED = "ALERT_RAISED";
@@ -30,13 +24,6 @@ module.exports = function Alerts(stream, onAlert) {
      * @private
      */
     let _timeWindow = [1, "minute"];
-
-    /**
-     * The callback when an alert is triggered
-     * @type {Function} callback
-     * @private
-     */
-    let _onAlert = onAlert;
 
     /**
      * The unix timestamp when the stream starts so that we know when we can start triggering events
@@ -64,6 +51,8 @@ module.exports = function Alerts(stream, onAlert) {
      *
      * @param {Number} number the number of units
      * @param {String} unit the unit (minutes, hours, seconds...)
+     *
+     * @returns {this} the instance
      */
     this.setAverageTimeWindow = function setAverageTimeWindow(number, unit) {
         if (typeof number !== "number" || typeof unit !== "string") {
@@ -72,11 +61,15 @@ module.exports = function Alerts(stream, onAlert) {
         }
 
         _timeWindow = [number, unit];
+
+        return this;
     };
 
     /**
      * Set the threshold above and below which alerts are triggered
+     *
      * @param {Number} threshold the threshold above and below which alerts are triggered
+     * @returns {this} the instance
      */
     this.setThreshold = function setThreshold(threshold) {
         if (typeof threshold !== "number") {
@@ -84,12 +77,21 @@ module.exports = function Alerts(stream, onAlert) {
         }
 
         _threshold = threshold;
+
+        return this;
     };
 
     /**
-     * Initializes the alerts computation. And alert is triggered when the threshold is reached, then the onAlert callback is called.
+     * Starts the alerts computation. An alert is triggered when the threshold is reached and is then passed down the stream
+     * Alerts look like:
+     *
+     * { loadAverage: 2,
+      *  time: 'iso-date-time',
+      *  type: "ALERT_RAISED" || "ALERT_CLEARED"
+      * }
+     * @returns {Stream} an alerts stream.
      */
-    this.init = function init() {
+    this.startComputing = function startComputing() {
         _startDate = moment().unix();
 
         let hasNotEnoughData = getNotEnoughDataProperty(stream);
@@ -100,10 +102,8 @@ module.exports = function Alerts(stream, onAlert) {
             .map(calculateAverage)
             .skipWhile(hasNotEnoughData)
             .map(computeAlert)
-            .skipDuplicates()
-            .skipWhile(cantTriggerAlert)
-            .doAction(_onAlert)
-            .log();
+            .skipDuplicates(isSameAlert)
+            .skipWhile(cantTriggerAlert);
     };
 
     /**
@@ -168,5 +168,15 @@ module.exports = function Alerts(stream, onAlert) {
      */
     function cantTriggerAlert(alert) {
         return alert.type === ALERT_CLEARED;
+    }
+
+    /**
+     * Tells if two alerts are the same by comparing their type
+     * @param {Object} oldAlert the old alert
+     * @param {Object} newAlert the new alert
+     * @returns {boolean} true if they have the same type
+     */
+    function isSameAlert(oldAlert, newAlert) {
+        return oldAlert.type === newAlert.type;
     }
 };
