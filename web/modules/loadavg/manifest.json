@@ -1,0 +1,16 @@
+{
+  "name": "loadavg",
+  "description": "Renders load average over a period of time",
+  "entry": "index.js",
+  "cerberus": {
+    "UIElements": ["lineChart"],
+    "routes": ["loadavg"],
+    "exposes": []
+  },
+  "configuration": {
+    "timeWindow": {
+      "number": 10,
+      "unit": "minutes"
+    }
+  }
+}

@@ -9,11 +9,6 @@
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="assets/index.js"></script>
-        <script>
-            const socket = io(`${window.location.hostname}:${window.location.port}/loadavg`);
-
-            socket.on("current", loadavg => console.log(loadavg));
-        </script>
     </body>
 </html>
 

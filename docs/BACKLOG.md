@@ -48,3 +48,4 @@
  - [ ] TECHDEBT-01 The server doesn't trigger event on the client web socket without the .log() in the streams
  - [ ] DEFECT-01 in alerts.specs.js, Bacon.fromBinder doesn't call the callback
  - [ ] TECHDEBT-02 Extract eslint configuration from root package.json and put it its own file, then configure eslint
+ - [ ] TECHDEBT-03 Remove hard coded preloading of modules and UIElements and make it based on the configuration

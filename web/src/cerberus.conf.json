@@ -1,0 +1,7 @@
+{
+  "title": "Cerberus - System monitoring",
+  "modules": {
+    "loadavg": "../modules/loadavg/"
+  },
+  "UIElements": ["lineChart"]
+}
