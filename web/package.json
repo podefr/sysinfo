@@ -1,0 +1,16 @@
+{
+  "name": "web",
+  "version": "0.0.1-alpha",
+  "description": "the web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node . --verbose"
+  },
+  "keywords": [
+    "web",
+    "application"
+  ],
+  "author": "Olivier Scherrer",
+  "license": "MIT",
+  "private": true
+}

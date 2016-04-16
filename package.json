@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "cd agent/; npm run start; cd ../server/; npm run start &",
-    "install": "cd agent/; npm install; cd ../server/; npm install"
+    "install": "cd agent/; npm install; cd ../server/; npm install",
+    "test": "jasmine-node . --verbose"
   },
   "keywords": [
     "datadog",

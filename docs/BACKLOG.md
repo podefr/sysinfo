@@ -14,7 +14,7 @@
  - [X] SERVER-05 Serve webapp and assets
 
 ## [Webapp]
- - [ ] WEBAPP-01 Bootstrap webapp, add package.json, install scripts
+ - [X] WEBAPP-01 Bootstrap webapp, add package.json, install scripts
  - [ ] WEBAPP-02 Install dev environment including css preprocessor, test frameworks and dependencies
  - [ ] WEBAPP-03 Add index.html, initialize framework
  - [ ] WEBAPP-04 Install and render load average component
