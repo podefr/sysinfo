@@ -13,8 +13,8 @@ module.exports = {
         const alerts = new Alerts(stream);
 
         alerts
-            .setThreshold(1)
-            .setAverageTimeWindow(2, "minutes")
+            .setThreshold(configuration.THRESHOLD)
+            .setAverageTimeWindow(configuration.TIME_WINDOW[0], configuration.TIME_WINDOW[1])
             .startComputing()
             .doAction(saveToStore(alertsStore))
             .doAction(broadcastToClient("alert", serverSocket))
@@ -33,7 +33,7 @@ module.exports = {
 function createStream(agentSocket) {
     return Bacon.fromBinder(sink => {
         agentSocket.on("current", loadAverage => {
-            sink(new bacon.Next(loadAverage));
+            sink(loadAverage);
         });
     });
 }

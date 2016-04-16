@@ -8,7 +8,8 @@
     "INDEX_PATH": "../web/public/index.html",
     "MODULES": {
       "loadavg": {
-
+        "THRESHOLD": 1,
+        "TIME_WINDOW": [2, "minutes"]
       }
     }
 
