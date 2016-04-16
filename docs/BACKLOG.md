@@ -15,22 +15,23 @@
 
 ## [Webapp]
  - [X] WEBAPP-01 Bootstrap webapp, add package.json, install scripts
- - [ ] WEBAPP-02 Install dev environment including css preprocessor, test frameworks and dependencies
- - [ ] WEBAPP-03 Add index.html, initialize framework
+ - [X] WEBAPP-02 Install dev environment including css preprocessor, test frameworks and dependencies
+ - [X] WEBAPP-03 Add index.html, initialize framework
  - [ ] WEBAPP-04 Install and render load average component
  - [ ] WEBAPP-04 Install and render alerts component
  - [ ] WEBAPP-05 Render notifications when a new alerts come in
  
 ## [Framework]
- - [ ] FRAMEWORK-01 Create framework skeleton to expose data and load components
+ - [X] FRAMEWORK-01 Create framework skeleton to expose data and load components
  - [ ] FRAMEWORK-02 Stream data from server to components on demand
- - [ ] FRAMEWORK-03 Load component from manifest file
+ - [X] FRAMEWORK-03 Load component from manifest file
  - [ ] FRAMEWORK-04 Add inter-component communication
 
 ## [UI]
  - [ ] UI-01 Create reusable line chart with default CSS
  - [ ] UI-02 Create reusable notification with default CSS
- - [ ] UI-02 Create reusable list with default CSS
+ - [ ] UI-03 Create reusable list with default CSS
+ - [ ] UI-04 Create reusable bar chart with default CSS
 
 ## [LOADAVG]
  - [ ] LOADAVG-01 Bootstrap load average module to render a line chart with the historical load average
