@@ -2,25 +2,43 @@
 
 console.log("Starting server");
 
+const express = require("express");
 const ioServer = require("socket.io");
 const ioClient = require("socket.io-client");
 const configuration = require("./server.conf.json");
 const http = require("http");
-const fs = require("fs");
+const path = require("path");
 
-startModules(startIO(startWebServer()));
+const application = express();
+const server = http.Server(application);
+const serverSocket = ioServer(server);
 
-function startModules(serverSocket) {
+startWebServer();
+initIO();
+startModules();
+
+function startModules() {
    Object.keys(configuration.SERVER.MODULES).forEach(moduleName => {
       const moduleConfiguration = configuration.SERVER.MODULES[moduleName];
       const module = require(`./${moduleName}/index`);
+      const moduleRoutes = require(`./${moduleName}/${moduleName}.conf.json`).ROUTES;
 
-      console.log(`Starting ${moduleName}`);
-      module.init(connectAgent(moduleName), serverSocket.of(`${moduleName}`), moduleConfiguration);
+      module.init(connectToAgent(moduleName), serverSocket.of(`${moduleName}`), moduleConfiguration);
+
+      Object.keys(moduleRoutes).forEach(routeName => {
+         const methodName = moduleRoutes[routeName];
+
+         if (typeof module[methodName] !== "function") {
+            throw new Error(`No handler ${moduleName}.${methodName} found for route ${moduleName}/${routeName}`);
+         }
+         application.get(`/${moduleName}/${routeName}`, module[methodName].bind(module));
+      });
+
+      console.log(`${moduleName} started`);
    });
 }
 
-function connectAgent(moduleName) {
+function connectToAgent(moduleName) {
    const URL = configuration.AGENT.URL;
    const PORT = configuration.AGENT.PORT;
    const socket = ioClient.connect(`${URL}:${PORT}/${moduleName}`);
@@ -33,22 +51,15 @@ function connectAgent(moduleName) {
 
 function startWebServer() {
    const port = configuration.SERVER.PORT;
-   const server = http.createServer((request, response) => {
-      response.writeHead(200, {"Content-Type": "text/html"});
-      response.write(fs.readFileSync(configuration.SERVER.INDEX_PATH));
-      response.end();
+
+   application.get("/", (request, response) => {
+      response.sendFile(path.resolve(`${__dirname}/${configuration.SERVER.INDEX_PATH}`));
    });
 
    server.listen(port);
    console.log(`Web server running on http://localhost:${port}`);
-
-   return server;
 }
 
-function startIO(server) {
-   const serverSocket = ioServer(server);
-
-   serverSocket.on("connect", _ => console.log("Accepted new connection to web server"));
-
-   return serverSocket;
+function initIO() {
+   serverSocket.on("connect", _ => console.log("Accepted new connection from web client"));
 }

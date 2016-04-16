@@ -22,7 +22,16 @@ module.exports = {
 
         stream
             .doAction(saveToStore(statsStore))
-            .doAction(broadcastToClient("current", serverSocket));
+            .doAction(broadcastToClient("current", serverSocket))
+            .log();
+    },
+
+    getAlerts: function getAlerts(request, response) {
+        response.send(alertsStore.get());
+    },
+
+    getLoadAverages: function getLoadAverages(request, response) {
+        response.send(statsStore.get());
     }
 };
 

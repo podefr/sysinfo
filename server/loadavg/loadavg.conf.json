@@ -1,0 +1,6 @@
+{
+  "ROUTES": {
+    "get-alerts": "getAlerts",
+    "get-load-averages": "getLoadAverages"
+  }
+}
