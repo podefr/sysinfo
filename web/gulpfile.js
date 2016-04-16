@@ -57,7 +57,7 @@ gulp.task("compile", () => {
         .pipe(babel())
         .pipe(concat("index.js"))
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("public/js"));
+        .pipe(gulp.dest("public/assets"));
 });
 
 gulp.task("compile:watch", () => {
@@ -65,13 +65,13 @@ gulp.task("compile:watch", () => {
 });
 
 gulp.task("sass", () => {
-    return gulp.src("style/main.scss")
+    return gulp.src("src/index.scss")
         .pipe(sass().on("error", sass.logError))
-        .pipe(gulp.dest("./public/css"));
+        .pipe(gulp.dest("./public/assets"));
 });
 
 gulp.task("sass:watch", () => {
-    return gulp.watch("style/**/*.scss", ["sass"]);
+    return gulp.watch("src/**/*.scss", ["sass"]);
 });
 
 gulp.task("lint", () => {
