@@ -28,20 +28,25 @@ module.exports = {
 
         loadAverages = new LoadAverages(cerberusAPI);
         loadAverages.init();
+        loadAverages.setTimeWindow(configuration.timeWindow);
+        loadAverages.setDimensions(configuration.chartDimensions);
         loadAverages.render(dom.querySelector(".load-averages"));
     },
 
     getSnapshots: function getSnapshots() {
-        cerberusAPI.getJSON("loadavg", "get-load-averages", {
-            number: 10,
-            unit: "minutes"
-        }).then(loadAverages.setSnapshot);
+        getLoadAverages().then(loadAverages.update);
         alerts.setSnapshot([]);
     },
 
     subscribeToUpdates: function subscribeToUpdates() {
-        cerberusAPI.getSocket("loadavg").on("current", loadAverages.update);
+        cerberusAPI.getSocket("loadavg").on("current", _ => {
+            getLoadAverages().then(loadAverages.update);
+        });
 
         alerts.update();
     }
 };
+
+function getLoadAverages() {
+    return cerberusAPI.getJSON("loadavg", "get-load-averages", configuration.timeWindow);
+}

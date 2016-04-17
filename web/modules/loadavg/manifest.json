@@ -11,6 +11,10 @@
     "timeWindow": {
       "number": 10,
       "unit": "minutes"
+    },
+    "chartDimensions": {
+      "width": 800,
+      "height": 600
     }
   }
 }

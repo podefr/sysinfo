@@ -3,50 +3,73 @@
 let d3 = require("d3");
 
 module.exports = function LineChart() {
-    let minDomain = 0;
-    let maxDomain;
+    let _xScale;
+    let _yScale;
 
-    let minRange = 0;
-    let maxRange;
+    let _path;
+    let _svg;
 
-    let _scale;
+    let _data = [];
 
-    this.setDomain = function setDomain(max, min) {
-        maxDomain = max;
+    let _line = d3.svg.line()
+        .x(item => _xScale(new Date(item.x)))
+        .y(item => _yScale(item.y));
 
-        if (typeof min !== "undefined") {
-            minDomain = min;
-        }
+    this.setXScale = function setXScale(xScale) {
+        _xScale = xScale;
     };
 
-    this.setRange = function setRange(max, min) {
-        maxRange = max;
-
-        if (typeof min !== "undefined") {
-            minRange = min;
-        }
+    this.setYScale = function setYScale(yScale) {
+        _yScale = yScale;
     };
 
     this.render = function render(dom) {
         if (!dom) {
             throw new Error("LineChart requires a DOM element to be rendered");
         }
-        _scale = createScale();
 
-        d3.select(dom)
-            .append("svg:svg");
-
-    };
-
-    function createScale() {
-        if (!maxDomain || !maxRange) {
-            throw new Error("LineChart requires a max range and a max domain to be rendered");
+        if (!_yScale || !_xScale) {
+            throw new Error("LineChart requires both an xScale and a yScale to be rendered");
         }
 
-        return d3
-            .scale
-            .linear()
-            .domain([minDomain, maxDomain])
-            .range([minRange, maxRange]);
+        _svg = d3.select(dom)
+            .append("svg:svg")
+            .attr("class", "ui-line-chart");
+
+        _path = _svg.append("svg:path")
+            .attr("class", "line");
+
+        _addAxes();
+
+        _render();
+    };
+
+    function _render() {
+        _path
+            .attr("d", _line(_data));
     }
+
+    function _addAxes() {
+        let xAxis = d3.svg.axis()
+            .scale(_xScale)
+            .orient("bottom");
+
+        let yAxis = d3.svg.axis()
+            .scale(_yScale)
+            .orient("left");
+
+        _svg.append("svg:g")
+            .attr("class", "x axis")
+            .call(xAxis);
+
+        _svg.append("svg:g")
+            .attr("class", "y axis")
+            .call(yAxis);
+    }
+
+    this.update = function update(snapshot) {
+        _data = snapshot;
+
+        _render();
+    };
 };
