@@ -17,6 +17,20 @@ module.exports = {
         }
     },
 
+    /**
+     * Get current socket status
+     *
+     * @example
+     *
+     * returns:
+     *
+     * {
+     *  status: true
+     * }
+     *
+     * @param request
+     * @param response
+     */
     getStatus: function getStatus(request, response) {
         response.send({
             status: _agentSocket.connected

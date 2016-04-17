@@ -6,6 +6,11 @@ const q = require("q");
 let configuration;
 
 function CerberusAPI(name, UIElements, sockets) {
+    /**
+     * Get UIElement by name. It has to be referenced in the module's manifest to be used.
+     * @param {String} UIElementName name of the UIElement to get
+     * @returns {UIElement} UIElement constructor
+     */
     this.getUIElement = function getUIElement(UIElementName) {
         if (!UIElements[UIElementName]) {
             throw new Error(`${name} doesn't have access to UIElement ${UIElementName}. Add it to the module's manifest.`);
@@ -14,6 +19,11 @@ function CerberusAPI(name, UIElements, sockets) {
         return UIElements[UIElementName];
     };
 
+    /**
+     * Get a channel on the web socket by name. The channel has to be referenced in the module's manifest to be accessible.
+     * @param {String} socketName get socket by name
+     * @returns {webSocket} the web socket, ready to be used
+     */
     this.getSocket = function getSocket(socketName) {
         if (!sockets[socketName]) {
             throw new Error(`${name} doesn't have access to socket ${socketName}. Add it to the module's manifest.`);
@@ -22,6 +32,13 @@ function CerberusAPI(name, UIElements, sockets) {
         return sockets[socketName];
     };
 
+    /**
+     * Get JSON data from the server using it's rest/ API
+     * @param {String} apiName name of the api to call (usually name of module)
+     * @param {url} url the url to call (usually snaked-case method name)
+     * @param {Object} query the query string
+     * @returns {Function|promise} promise that resolves with the data
+     */
     this.getJSON = function getJSON(apiName, url, query) {
         if (!sockets[apiName]) {
             throw new Error(`${name} doesn't have access to route ${apiName}. Add it to the module's manifest.`);
@@ -48,6 +65,10 @@ function CerberusAPI(name, UIElements, sockets) {
         return defer.promise;
     };
 
+    /**
+     * Get dom returns the DOM element where the module is rendered. It's not a sandbox but can be considered as such.
+     * @returns {DOMElement} the dom element where the module is rendered
+     */
     this.getDom = function getDom() {
         return document.querySelector(`[data-module="${name}"]`);
     };

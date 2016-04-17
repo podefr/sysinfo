@@ -14,3 +14,9 @@ The framework is useful for various things:
 
 ## Cerberus API
 
+CerberusAPI is an object that's passed to every initialized module and that allows it to:
+- Communicate with the outside world with `getJSON` and `gtSocket`
+- get UIElements using `getUIElement`
+- get access to the application's DOM with `getDom`
+
+More info in `cerberusAPI.js`'s JSdoc

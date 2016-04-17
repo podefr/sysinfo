@@ -9,15 +9,15 @@ Starting server
 Web server running on http://localhost:8001
 loadavg started
 connectivity started
+sysinfo started
 loadavg is connected
 connectivity is connected
-{ loadAverage: [ 1.3, 1.43, 1.57 ],
-  time: '2016-04-17T08:22:56.191Z' }
+sysinfo is connected
+{ loadAverage: [ 1.4, 1.43, 1.41 ],
+  time: '2016-04-17T17:08:44.893Z' }
 Accepted new connection from web client
-Accepted new connection from web client
-{ loadAverage: [ 1.41, 1.44, 1.58 ],
-  time: '2016-04-17T08:23:05.817Z' }
-{ loadAverage: [ 1.49, 1.46, 1.58 ],
+{ loadAverage: [ 1.4, 1.43, 1.41 ],
+  time: '2016-04-17T17:08:51.687Z' }
 ````
 
 The web server runs on port 8001 by default, it can be edited in the configuration file.
