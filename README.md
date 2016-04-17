@@ -25,7 +25,7 @@ Create a simple web application that monitors load average on your machine:
 ### Prerequisites
 
 - node.js 5.8.0+ (should work on node.js 4.x.x+)
-- recent Chrome (tested on Canary 51)
+- recent Chrome (tested on Canary 51). Will not work on other browsers due to ES6 since Babel or similar isn't used. This is documented in the list of issues.
 
 ### Running the application
 

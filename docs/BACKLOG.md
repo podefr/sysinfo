@@ -59,3 +59,4 @@
  - [ ] DEFECT-02 using moment() makes the alerts.spec.js brittle and they may sometimes fail.
  - [ ] TECHDEBT-04 Make sure Cerberus only exposes to other modules the module's methods that are exposed in the manifest.
  - [ ] DEFECT-03 Fix the gulp build: Make watches more efficient, fix the karma test runner...
+ - [ ] DEFECT-04 Add babel so that other browsers can also run the application
