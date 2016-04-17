@@ -1,3 +1,20 @@
 [data-module="sysinfo"] {
+  $item-height: 30px;
 
+  ul {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    line-height: $item-height;
+  }
+
+  li {
+    margin: 2px;
+    height: $item-height;
+    display: inline-block;
+  }
+
+  span {
+    @include pill;
+  }
 }

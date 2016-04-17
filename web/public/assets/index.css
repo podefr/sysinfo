@@ -40,9 +40,9 @@
 [data-module="connectivity"] .splash-screen {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
   bottom: 0;
+  right: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   font-size: 24px;
   text-align: center;
@@ -52,6 +52,23 @@
   flex-direction: column; }
   [data-module="connectivity"] .splash-screen.hide {
     display: none; }
+
+[data-module="sysinfo"] ul {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  line-height: 30px; }
+
+[data-module="sysinfo"] li {
+  margin: 2px;
+  height: 30px;
+  display: inline-block; }
+
+[data-module="sysinfo"] span {
+  background-color: #fafafa;
+  border-radius: .2em;
+  padding: .5em;
+  color: #4d5052; }
 
 body {
   background-color: #393939;
@@ -82,4 +99,4 @@ section > div, h1 {
   padding: 10px; }
 
 svg {
-  background-color: #f7f7f7; }
+  background-color: #fafafa; }

@@ -1,12 +1,15 @@
+@import "./ui/colors";
 @import "./ui/lineChart/index";
 @import "./ui/list/index";
+@import "./ui/mixins";
 
 @import "../modules/loadavg/index";
 @import "../modules/connectivity/index";
+@import "../modules/sysinfo/index";
 
 body {
-  background-color: #393939;
-  color: #bababb;
+  background-color: $grey-ramp10;
+  color: $grey-ramp150;
   font-family: monospace;
   margin: 0;
   padding: 0;
@@ -33,12 +36,12 @@ h2, h3 {
 }
 
 section > div, h1 {
-  background-color: #4d5052;
+  background-color: $grey-ramp20;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
 }
 
 svg {
-  background-color: #f7f7f7;
+  background-color: $grey-ramp160;
 }
