@@ -1,9 +1,21 @@
 .ui-line-chart {
   padding: 40px; }
+  .ui-line-chart .hide {
+    display: none; }
   .ui-line-chart .line {
     fill: none;
     stroke: #46d6ff;
     stroke-width: 2px; }
+  .ui-line-chart .legend {
+    width: 50px;
+    height: 20px;
+    fill: #46d6ff; }
+    .ui-line-chart .legend text {
+      fill: white; }
+  .ui-line-chart .ui-line-chart-ruler {
+    stroke-width: 1px;
+    stroke: #393939;
+    shape-rendering: crispEdge; }
   .ui-line-chart .axis path, .ui-line-chart .axis line {
     fill: none;
     stroke: black;

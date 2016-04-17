@@ -16,9 +16,15 @@ module.exports = function LineChart() {
 
     let _data = [];
 
+    let _verticalPath;
+
     let _line = d3.svg.line()
         .x(item => _xScale(new Date(item.x)))
         .y(item => _yScale(item.y));
+
+    let _verticalLine = d3.svg.line()
+        .x(point => _xScale(new Date(point[0])))
+        .y(point => _yScale(point[1]));
 
     this.setXScale = function setXScale(xScale) {
         _xScale = xScale;
@@ -48,8 +54,43 @@ module.exports = function LineChart() {
             .attr("height", _height)
             .attr("class", "ui-line-chart");
 
+        let _legend = _svg.append("rect")
+            .attr("class", "legend");
+
+        let _legendText = _legend
+            .append("text");
+
+        dom.addEventListener("mousemove", function (event) {
+            if (event.clientX < 60 || event.clientX > 660) {
+                return;
+            }
+            _verticalPath.classed("hide", false);
+            _legend.classed("hide", false);
+
+            let invertedX = _xScale.invert(event.clientX - 60);
+            let minY = _yScale.domain()[0];
+            let maxY = _yScale.domain()[1];
+
+            _verticalPath.attr("d", _verticalLine([[invertedX, maxY], [invertedX, minY]]));
+
+            _legend
+                .attr("x", event.clientX - 50)
+                .attr("y", event.clientY - 300);
+
+            _legendText
+                .text("2.33");
+        });
+
+        dom.addEventListener("mouseout", function () {
+            _verticalPath.classed("hide", true);
+            _legend.classed("hide", true);
+        });
+
         _path = _svg.append("svg:path")
             .attr("class", "line");
+
+        _verticalPath = _svg.append("svg:path")
+            .attr("class", "line hide ui-line-chart-ruler")
 
         _addAxes();
         _render();

@@ -1,10 +1,30 @@
 .ui-line-chart {
   padding: 40px;
 
+  .hide {
+    display: none;
+  }
+
   .line {
     fill: none;
     stroke: $color-palette-10;
     stroke-width: 2px;
+  }
+
+  .legend {
+    width: 50px;
+    height: 20px;
+    fill: $color-palette-10;
+
+    text {
+      fill: white;
+    }
+  }
+
+  .ui-line-chart-ruler {
+    stroke-width: 1px;
+    stroke: $grey-ramp10;
+    shape-rendering: crispEdge;
   }
 
   .axis path, .axis line {
