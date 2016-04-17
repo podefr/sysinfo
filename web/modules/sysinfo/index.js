@@ -1,23 +1,21 @@
 "use strict";
 
+const InfoUI = require("./ui/Info");
+
 module.exports = {
     init: function init(cerberusAPI) {
-        const sysinfoDom = cerberusAPI.getDom();
+        const infoUIDom = cerberusAPI.getDom().querySelector(".general-info");
         const socket = cerberusAPI.getSocket("sysinfo");
+
+        const infoUI = new InfoUI();
+
+        infoUI.init();
+        infoUI.render(infoUIDom);
 
         cerberusAPI
             .getJSON("sysinfo", "get-all-info")
-            .then(setSnapshot);
+            .then(infoUI.setSnapshot);
 
-        socket.on("update", update);
-
-        function setSnapshot() {
-
-        }
-
-        function update() {
-
-        }
-
+        socket.on("update", infoUI.update);
     }
 };

@@ -1,7 +1,7 @@
 "use strict";
 
 const OObject = require("olives").OObject;
-const BindPlugin = require('olives')['Bind.plugin'];
+const BindPlugin = require("olives")["Bind.plugin"];
 
 module.exports = function List(model) {
     const list = new OObject(model);

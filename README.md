@@ -55,6 +55,10 @@ A very simple module that shows the basics of how to add an application. It has 
 a server counterpart that monitors the multiplexed socket, and a `web` module that displays a splash screen when the connectivity
 between the agent and the server is lost. To try it, simply kill the `agent` process and restart it.
 
+#### General system information
+
+Displays general information about the monitored system such as when the system started, the free and total memory and OS and CPU information.
+
 ### Tech stack
 
 The application is running on `node.js` and `ES6` is used where possible.

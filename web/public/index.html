@@ -7,9 +7,35 @@
     <body>
         <h1>Cerberus • System monitoring</h1>
 
-        <section data-modules="general">
-            <div>
+        <section data-module="sysinfo">
+            <div class="general-info">
                 <h2>General system information</h2>
+
+                <dl>
+                    <dt>System started</dt>
+                    <dd data-model="bind:getSeconds, UPTIME"></dd>
+
+                    <dt>Free memory</dt>
+                    <dd data-model="bind:getMemory, FREEMEM, GB"></dd>
+
+                    <dt>Total memory</dt>
+                    <dd data-model="bind:getMemory, TOTALMEM"></dd>
+
+                    <dt>OS Type</dt>
+                    <dd data-model="bind:innerText, OS_TYPE"></dd>
+
+                    <dt>OS Release</dt>
+                    <dd data-model="bind:innerText, OS_RELEASE"></dd>
+
+                    <dt>CPU Model</dt>
+                    <dd data-model="bind:getCpuModel, CPUS"></dd>
+
+                    <dt>CPU Speed</dt>
+                    <dd data-model="bind:getCpuSpeed, CPUS"></dd>
+
+                    <dt>CPU Count</dt>
+                    <dd data-model="bind:getCpuCount, CPUS"></dd>
+                </dl>
             </div>
         </section>
 
