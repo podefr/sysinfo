@@ -7,11 +7,7 @@
     stroke: #46d6ff;
     stroke-width: 2px; }
   .ui-line-chart .legend {
-    width: 50px;
-    height: 20px;
-    fill: #46d6ff; }
-    .ui-line-chart .legend text {
-      fill: white; }
+    fill: #393939; }
   .ui-line-chart .ui-line-chart-ruler {
     stroke-width: 1px;
     stroke: #393939;

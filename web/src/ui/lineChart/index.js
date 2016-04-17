@@ -16,7 +16,9 @@ module.exports = function LineChart() {
 
     let _data = [];
 
-    let _verticalPath;
+    let _rulerPath;
+
+    let _legend;
 
     let _line = d3.svg.line()
         .x(item => _xScale(new Date(item.x)))
@@ -48,48 +50,22 @@ module.exports = function LineChart() {
             throw new Error("LineChart requires both an xScale and a yScale to be rendered");
         }
 
+        dom.addEventListener("mousemove", _onMouseMove);
+        dom.addEventListener("mouseout", _onMouseOut);
+
         _svg = d3.select(dom)
             .append("svg:svg")
             .attr("width", _width)
             .attr("height", _height)
             .attr("class", "ui-line-chart");
 
-        let _legend = _svg.append("rect")
+        _legend = _svg.append("text")
             .attr("class", "legend");
-
-        let _legendText = _legend
-            .append("text");
-
-        dom.addEventListener("mousemove", function (event) {
-            if (event.clientX < 60 || event.clientX > 660) {
-                return;
-            }
-            _verticalPath.classed("hide", false);
-            _legend.classed("hide", false);
-
-            let invertedX = _xScale.invert(event.clientX - 60);
-            let minY = _yScale.domain()[0];
-            let maxY = _yScale.domain()[1];
-
-            _verticalPath.attr("d", _verticalLine([[invertedX, maxY], [invertedX, minY]]));
-
-            _legend
-                .attr("x", event.clientX - 50)
-                .attr("y", event.clientY - 300);
-
-            _legendText
-                .text("2.33");
-        });
-
-        dom.addEventListener("mouseout", function () {
-            _verticalPath.classed("hide", true);
-            _legend.classed("hide", true);
-        });
 
         _path = _svg.append("svg:path")
             .attr("class", "line");
 
-        _verticalPath = _svg.append("svg:path")
+        _rulerPath = _svg.append("svg:path")
             .attr("class", "line hide ui-line-chart-ruler")
 
         _addAxes();
@@ -99,6 +75,30 @@ module.exports = function LineChart() {
     function _render() {
         _path
             .attr("d", _line(_data));
+    }
+
+    function _onMouseMove(event) {
+        if (event.clientX < 60 || event.clientX > 660) {
+            return;
+        }
+        _rulerPath.classed("hide", false);
+        _legend.classed("hide", false);
+
+        let invertedX = _xScale.invert(event.clientX - 60);
+        let minY = _yScale.domain()[0];
+        let maxY = _yScale.domain()[1];
+
+        _rulerPath.attr("d", _verticalLine([[invertedX, maxY], [invertedX, minY]]));
+
+        _legend
+            .attr("x", event.clientX - 50)
+            .attr("y", event.clientY - 300)
+            .text("2.33");
+    }
+
+    function _onMouseOut() {
+        _rulerPath.classed("hide", true);
+        _legend.classed("hide", true);
     }
 
     function _addAxes() {

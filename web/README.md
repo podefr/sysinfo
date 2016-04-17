@@ -18,13 +18,16 @@
 
 ### How to build the application
 
-`gulp package`
+`gulp package`: will build the sass and the bundled JS into `public/assets` where the web server serves the files from
+`gulp sass` or `gulp compile`: respectively only builds the css or the JS
 
-### How to run the tests
+It's also possible 
 
-`gulp test`
+### How to run the tests 
+
+`gulp test`: no tests, doesn't currently work as reported in the backlog
 
 ### How to watch changes
 
-`gulp watch`
+`gulp watch`: needs to be optimized, it doesn't watch all the proper directories and can be improved, prefer building sass or compile
 

@@ -12,13 +12,7 @@
   }
 
   .legend {
-    width: 50px;
-    height: 20px;
-    fill: $color-palette-10;
-
-    text {
-      fill: white;
-    }
+    fill: $grey-ramp10;
   }
 
   .ui-line-chart-ruler {
