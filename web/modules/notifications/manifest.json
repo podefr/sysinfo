@@ -1,0 +1,13 @@
+{
+  "name": "notifications",
+  "description": "Renders notifications in the screens",
+  "entry": "index.js",
+  "cerberus": {
+    "UIElements": [],
+    "routes": [],
+    "exposes": ["notify"]
+  },
+  "configuration": {
+    "NOTIFICATION_DELAY": 5e3
+  }
+}

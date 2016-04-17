@@ -61,6 +61,10 @@ between the agent and the server is lost. To try it, simply kill the `agent` pro
 
 Displays general information about the monitored system such as when the system started, the free and total memory and OS and CPU information.
 
+#### Notifications
+
+Displays notifications from other modules via the framework's inter-application communication protocol.
+
 ## Tech stack
 
 The application is running on `node.js` and `ES6` is used where possible.

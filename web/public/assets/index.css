@@ -68,6 +68,23 @@
   [data-module="connectivity"] .splash-screen.hide {
     display: none; }
 
+[data-module="notifications"] .notification {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #78bc2f;
+  color: white;
+  padding: 20px;
+  top: inherit;
+  transform: translate(0, 80px); }
+  [data-module="notifications"] .notification.ember {
+    background-color: #990c08; }
+  [data-module="notifications"] .notification.show {
+    transform: none;
+    transition: all .5s ease-in-out; }
+
 [data-module="sysinfo"] ul {
   margin: 0;
   padding: 0;

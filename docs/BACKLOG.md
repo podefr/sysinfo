@@ -19,17 +19,17 @@
  - [X] WEBAPP-03 Add index.html, initialize framework
  - [X] WEBAPP-04 Install and render load average component
  - [X] WEBAPP-04 Install and render alerts component
- - [ ] WEBAPP-05 Render notifications when a new alerts come in
+ - [X] WEBAPP-05 Render notifications when a new alerts come in
  
 ## [Framework]
  - [X] FRAMEWORK-01 Create framework skeleton to expose data and load components
  - [X] FRAMEWORK-02 Stream data from server to components on demand
  - [X] FRAMEWORK-03 Load component from manifest file
- - [ ] FRAMEWORK-04 Add inter-component communication
+ - [X] FRAMEWORK-04 Add inter-component communication
 
 ## [UI]
  - [X] UI-01 Create reusable line chart with default CSS
- - [ ] UI-02 Create reusable notification with default CSS
+ - [X] UI-02 Create reusable notification with default CSS
  - [X] UI-03 Create reusable list with default CSS
  - [ ] UI-04 Create reusable bar chart with default CSS
 
@@ -39,7 +39,7 @@
  
 ## [ALERTS]
  - [X] ALERTS-01 Render list of alerts when load average is above 1 or gets back to normal
- - [ ] ALERTS-02 Display notification when a new alert comes in
+ - [X] ALERTS-02 Display notification when a new alert comes in
  - [ ] ALERTS-03 Request load average to highlight a zone when hovering over a specific alert
  
 ## [CONNECTIVITY]
@@ -57,3 +57,4 @@
  - [ ] TECHDEBT-02 Extract eslint configuration from root package.json and put it its own file, then configure eslint
  - [ ] TECHDEBT-03 Remove hard coded preloading of modules and UIElements and make it based on the configuration
  - [ ] DEFECT-02 using moment() makes the alerts.spec.js brittle and they may sometimes fail.
+ - [ ] TECHDEBT-04 Make sure Cerberus only exposes to other modules the module's methods that are exposed in the manifest.

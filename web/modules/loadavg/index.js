@@ -48,8 +48,12 @@ module.exports = {
             getLoadAverages().then(loadAverages.setSnapshot);
         });
 
-        loadavgSocket.on("alert", _ => {
+        loadavgSocket.on("alert", alert => {
             getAlerts().then(alerts.setSnapshot);
+            cerberusAPI.APICall("notifications", "notify", {
+                text: `Load average triggered an alert`,
+                type: alert.type === "ALERT_RAISED" ? "ember" : "green"
+            });
         });
 
     },

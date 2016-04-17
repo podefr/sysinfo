@@ -18,5 +18,6 @@ CerberusAPI is an object that's passed to every initialized module and that allo
 - Communicate with the outside world with `getJSON` and `gtSocket`
 - get UIElements using `getUIElement`
 - get access to the application's DOM with `getDom`
+- Call another module's method using `APICall`
 
 More info in `cerberusAPI.js`'s JSdoc

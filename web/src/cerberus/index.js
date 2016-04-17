@@ -18,6 +18,10 @@ const preloadedModules = {
         "manifest": require("../../modules/connectivity/manifest.json"),
         "module": require("../../modules/connectivity/index.js")
     },
+    "notifications": {
+        "manifest": require("../../modules/notifications/manifest.json"),
+        "module": require("../../modules/notifications/index.js")
+    },
     "sysinfo": {
         "manifest": require("../../modules/sysinfo/manifest.json"),
         "module": require("../../modules/sysinfo/index.js")
@@ -33,6 +37,13 @@ function getSockets(sockets) {
     }, {});
 }
 
+function getModules() {
+    return Object.keys(preloadedModules).reduce((memo, moduleName) => {
+        memo[moduleName] = preloadedModules[moduleName].module;
+        return memo;
+    }, {});
+}
+
 module.exports = {
     init: function init(cerberusConf) {
         configuration = cerberusConf;
@@ -40,7 +51,8 @@ module.exports = {
         cerberusAPI.init({
             UIElements: preloadedUIElements,
             AgentSockets: getSockets(Object.keys(configuration.modules)),
-            restUrl: `http://${window.location.hostname}:${window.location.port}/rest`
+            restUrl: `http://${window.location.hostname}:${window.location.port}/rest`,
+            modulesAPIs: getModules()
         });
     },
 

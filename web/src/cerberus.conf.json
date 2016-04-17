@@ -3,7 +3,8 @@
   "modules": {
     "loadavg": "../modules/loadavg/",
     "connectivity": "../modules/connectivity",
-    "sysinfo": "../modules/sysinfo"
+    "sysinfo": "../modules/sysinfo",
+    "notifications": "../modules/notifications"
   },
   "UIElements": ["lineChart"]
 }

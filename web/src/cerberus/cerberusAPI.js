@@ -5,7 +5,7 @@ const q = require("q");
 
 let configuration;
 
-function CerberusAPI(name, UIElements, sockets) {
+function CerberusAPI(name, UIElements, sockets, moduleAPIs) {
     /**
      * Get UIElement by name. It has to be referenced in the module's manifest to be used.
      * @param {String} UIElementName name of the UIElement to get
@@ -72,6 +72,26 @@ function CerberusAPI(name, UIElements, sockets) {
     this.getDom = function getDom() {
         return document.querySelector(`[data-module="${name}"]`);
     };
+
+    /**
+     * Call another module's method
+     * @param {String} moduleName the name of the module that has the method to call
+     * @param {String} methodName the name of the method to call
+     * @param {Object} options to pass to the  method
+     * @returns {*}
+     * @constructor
+     */
+    this.APICall = function APICall(moduleName, methodName, options) {
+        if (!moduleAPIs[moduleName]) {
+            throw new Error(`${moduleName} doesn't exist and can't be called via APICall`);
+        }
+
+        if (typeof moduleAPIs[moduleName][methodName] !== "function") {
+            throw new Error(`${moduleName} doesn't have a function ${methodName} and can't be called via APICall`);
+        }
+
+        return moduleAPIs[moduleName][methodName](options);
+    };
 }
 
 module.exports = {
@@ -98,6 +118,8 @@ module.exports = {
             return memo;
         }, {});
 
-        return new CerberusAPI(name, moduleUIElements, moduleSockets);
+        let modulesAPIs = configuration.modulesAPIs;
+
+        return new CerberusAPI(name, moduleUIElements, moduleSockets, modulesAPIs);
     }
 };

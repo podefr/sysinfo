@@ -1,0 +1,19 @@
+[data-module="notifications"] {
+  .notification {
+    @include stretch;
+    background-color: $color-palette-20;
+    color: white;
+    padding: 20px;
+    top: inherit;
+    transform: translate(0, 80px);
+
+    &.ember {
+      background-color: $color-palette-30;
+    }
+
+    &.show {
+      transform: none;
+      transition: all .5s ease-in-out;
+    }
+  }
+}
