@@ -52,7 +52,6 @@ module.exports = function LineChart() {
             .attr("class", "line");
 
         _addAxes();
-
         _render();
     };
 

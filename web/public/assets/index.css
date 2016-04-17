@@ -2,7 +2,7 @@
   padding: 40px; }
   .ui-line-chart .line {
     fill: none;
-    stroke: black;
+    stroke: #46d6ff;
     stroke-width: 2px; }
   .ui-line-chart .axis path, .ui-line-chart .axis line {
     fill: none;
