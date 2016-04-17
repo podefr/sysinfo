@@ -1,0 +1,11 @@
+{
+  "name": "sysinfo",
+  "description": "Displays general information about the monitored system",
+  "entry": "index.js",
+  "cerberus": {
+    "UIElements": [],
+    "routes": ["sysinfo"],
+    "exposes": []
+  },
+  "configuration": {}
+}

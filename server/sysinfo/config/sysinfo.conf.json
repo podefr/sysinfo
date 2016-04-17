@@ -1,0 +1,5 @@
+{
+  "ROUTES": {
+    "get-all-info": "getAllInfo"
+  }
+}

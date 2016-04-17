@@ -2,7 +2,8 @@
   "title": "Cerberus - System monitoring",
   "modules": {
     "loadavg": "../modules/loadavg/",
-    "connectivity": "../modules/connectivity"
+    "connectivity": "../modules/connectivity",
+    "sysinfo": "../modules/sysinfo"
   },
   "UIElements": ["lineChart"]
 }
