@@ -4,19 +4,19 @@
 
 Create a simple web application that monitors load average on your machine:
 
-- Collect the machine load (using “uptime” for example)
-- Display in the application the key statistics as well as a history of load over the past 10 minutes in 10s intervals. We’d suggest a graphical representation using D3.js, but feel free to use another tool or representation if you prefer. Make it easy for the end-user to picture the situation!
-- Make sure a user can keep the web page open and monitor the load on their machine.
-- Whenever the load for the past 2 minutes exceeds 1 on average, add a message saying that “High load generated an alert - load = {value}, triggered at {time}”
-- Whenever the load average drops again below 1 on average for the past 2 minutes, Add another message explaining when the alert recovered.
-- Make sure all messages showing when alerting thresholds are crossed remain visible on the page for historical reasons.
-- Write a test for the alerting logic
-- Explain how you’d improve on this application design
+- [DONE] Collect the machine load (using “uptime” for example)
+- [DONE] Display in the application the key statistics as well as a history of load over the past 10 minutes in 10s intervals. We’d suggest a graphical representation using D3.js, but feel free to use another tool or representation if you prefer. Make it easy for the end-user to picture the situation!
+- [DONE] Make sure a user can keep the web page open and monitor the load on their machine.
+- [DONE] Whenever the load for the past 2 minutes exceeds 1 on average, add a message saying that “High load generated an alert - load = {value}, triggered at {time}”
+- [DONE] Whenever the load average drops again below 1 on average for the past 2 minutes, Add another message explaining when the alert recovered.
+- [DONE] Make sure all messages showing when alerting thresholds are crossed remain visible on the page for historical reasons.
+- [DONE] Write a test for the alerting logic
+- [DONE see docs/FEATUREREQUESTS.md] Explain how you’d improve on this application design
 
 ## In this repository:
 
 - `agent/`: the agent's code. The agent runs on the target system and collects the data
-- `docs/`: all the docs explaining the architecture, the features, howtos...
+- `docs/`: all the docs explaining the architecture, the features, howtos, backlog...
 - `server/` the server's code. The server connects to the agent to receive the collected data and exposes various endpoints to the webapp
 - `web/` the webapp's code. The webapp renders the collected data in a user friendly way.
 
@@ -41,7 +41,7 @@ They are developed to be installed on separate machines, but to make things easi
 
 When both have started, you will be able to load your browser and navigate to `http://localhost:8001`
 
-### Modules
+## Modules
 
 #### loadavg
 
@@ -59,7 +59,7 @@ between the agent and the server is lost. To try it, simply kill the `agent` pro
 
 Displays general information about the monitored system such as when the system started, the free and total memory and OS and CPU information.
 
-### Tech stack
+## Tech stack
 
 The application is running on `node.js` and `ES6` is used where possible.
 
@@ -68,6 +68,10 @@ The `server` is using `express` to route `REST` calls.
 The `webclient` is using `D3` for charting and the `Olives and Emily` MVC framework that I've also authored.
 It's using `moment` for data manipulation and `Bacon.js` for streams.
 
+## Dev process
+
+I started with breaking down the work into small tasks and put a backlog together. You can find it in `docs/BACKLOG.md`.
+Whenever a considered the task down, I put a [X] mark next to it. I've also added a list of tech debt/defects at the bottom of the backlog.
 
 ### License
 

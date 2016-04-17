@@ -5,13 +5,15 @@ const moment = require("moment");
 
 const Alerts = require("../alerts/Alerts");
 
-describe("Given a load average stream And an onAlert callback", () => {
+describe("Given a load average stream And an onAlert callback", function () {
     let stream;
     let sink;
     let onAlert;
 
     beforeEach(() => {
-        stream = Bacon.fromBinder(_sink => sink = _sink);
+        stream = Bacon.fromBinder(function (_sink) {
+            sink = _sink;
+        });
 
         onAlert = jasmine.createSpy();
     });
@@ -22,7 +24,8 @@ describe("Given a load average stream And an onAlert callback", () => {
                 .setAverageTimeWindow(30, "seconds")
                 .setThreshold(2)
                 .startComputing()
-                .doAction(onAlert);
+                .doAction(onAlert)
+                .log();
         });
 
         describe("When the first load average events come in", () => {
@@ -107,7 +110,7 @@ describe("Given a load average stream And an onAlert callback", () => {
 
                 it("Then an alert is triggered", () => {
                     expect(onAlert).toHaveBeenCalledWith({
-                        load: 2.06,
+                        load: 2,
                         time: moment().format(),
                         type: "ALERT_RAISED"
                     });
@@ -143,7 +146,7 @@ describe("Given a load average stream And an onAlert callback", () => {
 
                     it("Then the alert is cleared", () => {
                         expect(onAlert).toHaveBeenCalledWith({
-                            load: 1.8285714285714287,
+                            load: 1.9666666666666668,
                             time: moment().format(),
                             type: "ALERT_CLEARED"
                         });
