@@ -45,6 +45,9 @@
 ## [CONNECTIVITY]
  - [X] CONNECTIVITY-01 Render a splash screen when the server loses the connectivity with the agent
  
+ ## [SYSINFO]
+ - [X] SYSINFO-01 Get general system info
+ 
 ## [RESPONSIVE]
  - [ ] RESPONSIVE-01 Add tabs to toggle between alerts and load average chart when window size reduces
  

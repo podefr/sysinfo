@@ -21,7 +21,7 @@ function loadModules() {
     Object.keys(configuration.MODULES).forEach(function (moduleName) {
         console.log(`Loading module ${moduleName}`);
 
-        const module = require(`./${moduleName}/index`);
+        const module = require(`./modules/${moduleName}/index`);
 
         try {
             let moduleNamespace = server

@@ -1,23 +1,22 @@
 "use strict";
 
 const stats = require("./stats");
-const scheduler = require("./scheduler");
-const ioServer = require("socket.io");
+const Scheduler = require("./../../lib/scheduler");
 
 module.exports = {
     init: function init(socket, moduleConfiguration) {
+        const scheduler = new Scheduler();
         console.log("Start polling load average");
 
         function emitLoadAverage() {
             stats.getLoadAverage()
                 .then(loadAverage => {
-                    const data = {
+                    console.log("Sending loadAverages");
+
+                    socket.emit("current", {
                         loadAverage: loadAverage,
                         time: new Date()
-                    };
-
-                    console.log("load average", data);
-                    socket.emit("current", data);
+                    });
                 })
                 .fail(error => console.error(error));
         }
