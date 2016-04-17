@@ -31,7 +31,10 @@ module.exports = {
     },
 
     getLoadAverages: function getLoadAverages(request, response) {
-        response.send(statsStore.get());
+        let number = +request.query.number;
+        let unit = request.query.unit;
+
+        response.send(statsStore.get(number, unit));
     }
 };
 

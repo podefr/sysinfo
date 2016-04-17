@@ -23,7 +23,7 @@
  
 ## [Framework]
  - [X] FRAMEWORK-01 Create framework skeleton to expose data and load components
- - [ ] FRAMEWORK-02 Stream data from server to components on demand
+ - [X] FRAMEWORK-02 Stream data from server to components on demand
  - [X] FRAMEWORK-03 Load component from manifest file
  - [ ] FRAMEWORK-04 Add inter-component communication
 

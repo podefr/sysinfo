@@ -14,11 +14,11 @@ module.exports = function LoadAverages(cerberusAPI) {
         lineChart.render(dom);
     };
 
-    this.setSnapshot = function setSnapshot() {
-
+    this.setSnapshot = function setSnapshot(snapshot) {
+        console.log("received snapshot", snapshot);
     };
 
-    this.update = function update() {
-
+    this.update = function update(update) {
+        console.log("received update", update);
     };
 };

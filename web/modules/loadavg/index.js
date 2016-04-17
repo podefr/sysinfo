@@ -32,16 +32,16 @@ module.exports = {
     },
 
     getSnapshots: function getSnapshots() {
+        cerberusAPI.getJSON("loadavg", "get-load-averages", {
+            number: 10,
+            unit: "minutes"
+        }).then(loadAverages.setSnapshot);
         alerts.setSnapshot([]);
-        loadAverages.setSnapshot([]);
     },
 
     subscribeToUpdates: function subscribeToUpdates() {
-        let loadAveragesSocket = cerberusAPI.getSocket("loadavg");
-
-        loadAveragesSocket.on("current", loadavg => console.log(loadavg));
+        cerberusAPI.getSocket("loadavg").on("current", loadAverages.update);
 
         alerts.update();
-        loadAverages.update();
     }
 };

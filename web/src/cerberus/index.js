@@ -30,7 +30,8 @@ module.exports = {
 
         cerberusAPI.init({
             UIElements: preloadedUIElements,
-            AgentSockets: getSockets(Object.keys(configuration.modules))
+            AgentSockets: getSockets(Object.keys(configuration.modules)),
+            restUrl: `http://${window.location.hostname}:${window.location.port}/rest`
         });
     },
 

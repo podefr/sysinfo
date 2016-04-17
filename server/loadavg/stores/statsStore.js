@@ -27,11 +27,11 @@ module.exports = {
      * @returns {Array} A list of chronologically sorted load averages
      */
     get: function get(number, unit) {
-        const limit = moment().subtract(number, unit).unix();
+        const limit = moment().subtract(number, unit);
         let index = statsStore.length;
 
-        while (index--) {
-            if (moment(statsStore[index].time).unix() < limit) {
+        while (--index) {
+            if (moment(limit).isAfter(statsStore[index].time)) {
                 break;
             }
         }
