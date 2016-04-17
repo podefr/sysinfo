@@ -124,6 +124,10 @@ module.exports = function LoadAverages(cerberusAPI) {
 
     this.update = function update(update) {
         _lineChart.update(update.map(transformForChart));
+        _lineChart.updateXDomain([
+            new Date(moment().subtract(_timeWindow.number, _timeWindow.unit)),
+            new Date(moment())
+        ]);
     };
 
     function createXScale() {
@@ -77827,6 +77831,8 @@ module.exports = function LineChart() {
     let _xScale;
     let _yScale;
 
+    let _xAxis;
+
     let _path;
     let _svg;
 
@@ -77871,7 +77877,7 @@ module.exports = function LineChart() {
     }
 
     function _addAxes() {
-        let xAxis = d3.svg.axis()
+        _xAxis = d3.svg.axis()
             .scale(_xScale)
             .orient("bottom");
 
@@ -77881,7 +77887,7 @@ module.exports = function LineChart() {
 
         _svg.append("svg:g")
             .attr("class", "x axis")
-            .call(xAxis);
+            .call(_xAxis);
 
         _svg.append("svg:g")
             .attr("class", "y axis")
@@ -77892,6 +77898,12 @@ module.exports = function LineChart() {
         _data = snapshot;
 
         _render();
+    };
+
+    this.updateXDomain = function updateXDomain(domain) {
+        _xScale.domain(domain);
+        _svg.select(".x.axis")
+            .call(_xAxis);
     };
 };
 },{"d3":87}]},{},[305])

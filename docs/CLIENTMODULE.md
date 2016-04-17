@@ -29,7 +29,7 @@ Example manifest:
     "exposes": []
   },
   
-  // The module's configuration itself. This is a blog that's just passed to the init() method.
+  // The module's configuration itself. This is a blob that's just passed to the init() method.
   "configuration": {
     "timeWindow": {
       "number": 10,

@@ -31,6 +31,10 @@ module.exports = function LoadAverages(cerberusAPI) {
 
     this.update = function update(update) {
         _lineChart.update(update.map(transformForChart));
+        _lineChart.updateXDomain([
+            new Date(moment().subtract(_timeWindow.number, _timeWindow.unit)),
+            new Date(moment())
+        ]);
     };
 
     function createXScale() {
