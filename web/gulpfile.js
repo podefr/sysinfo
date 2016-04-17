@@ -79,7 +79,7 @@ gulp.task("compile:watch", () => {
 
 gulp.task("sass", () => {
     return gulp.src("src/index.scss")
-        .pipe(sass().on("error", sass.logError))
+        .pipe(sass().on("error", gutil.log))
         .pipe(gulp.dest("./public/assets"));
 });
 

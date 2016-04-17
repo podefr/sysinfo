@@ -26,6 +26,7 @@ module.exports = function LoadAverages(cerberusAPI) {
     this.render = function render(dom) {
         _lineChart.setXScale(createXScale());
         _lineChart.setYScale(createYScale());
+        _lineChart.setDimensions(_width, _height);
         _lineChart.render(dom);
     };
 
@@ -48,7 +49,7 @@ module.exports = function LoadAverages(cerberusAPI) {
 
     function createYScale() {
         return d3.scale.linear()
-            .domain([0, 8])
+            .domain([8, 0])
             .range([0, _height]);
     }
 

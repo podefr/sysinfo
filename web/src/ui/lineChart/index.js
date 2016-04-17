@@ -11,6 +11,9 @@ module.exports = function LineChart() {
     let _path;
     let _svg;
 
+    let _width;
+    let _height;
+
     let _data = [];
 
     let _line = d3.svg.line()
@@ -25,6 +28,11 @@ module.exports = function LineChart() {
         _yScale = yScale;
     };
 
+    this.setDimensions = function setDimensions(width, height) {
+        _width = width;
+        _height = height;
+    };
+
     this.render = function render(dom) {
         if (!dom) {
             throw new Error("LineChart requires a DOM element to be rendered");
@@ -36,6 +44,8 @@ module.exports = function LineChart() {
 
         _svg = d3.select(dom)
             .append("svg:svg")
+            .attr("width", _width)
+            .attr("height", _height)
             .attr("class", "ui-line-chart");
 
         _path = _svg.append("svg:path")
@@ -62,6 +72,7 @@ module.exports = function LineChart() {
 
         _svg.append("svg:g")
             .attr("class", "x axis")
+            .attr("transform", `translate(0, ${_height})`)
             .call(_xAxis);
 
         _svg.append("svg:g")
