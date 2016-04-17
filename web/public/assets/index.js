@@ -80523,27 +80523,34 @@ module.exports = function LineChart() {
 
 const OObject = require("olives").OObject;
 const BindPlugin = require("olives")["Bind.plugin"];
+const bindPluginExtra = require("../modelPlugin.extra");
 
 module.exports = function List(model) {
     const list = new OObject(model);
 
     list.seam.addAll({
-        model: new BindPlugin(model, {
-            toggleClass: function toggleClass(value, className) {
-                if (value) {
-                    this.classList.add(className);
-                } else {
-                    this.classList.remove(className);
-                }
-            }
-        })
+        model: new BindPlugin(model, bindPluginExtra)
     });
 
     this.render = function render(view) {
         list.alive(view);
     }
 };
-},{"olives":201}]},{},[342])
+},{"../modelPlugin.extra":345,"olives":201}],345:[function(require,module,exports){
+"use strict";
+
+const moment = require("moment");
+
+module.exports = {
+    formatTime: function formatTime(time) {
+        this.innerText = moment(time).format("lll");
+    },
+
+    formatNumber: function formatNumber(number) {
+        this.innerText = (number).toFixed(2);
+    }
+};
+},{"moment":192}]},{},[342])
 
 
 //# sourceMappingURL=index.js.map

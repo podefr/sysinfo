@@ -2,20 +2,13 @@
 
 const OObject = require("olives").OObject;
 const BindPlugin = require("olives")["Bind.plugin"];
+const bindPluginExtra = require("../modelPlugin.extra");
 
 module.exports = function List(model) {
     const list = new OObject(model);
 
     list.seam.addAll({
-        model: new BindPlugin(model, {
-            toggleClass: function toggleClass(value, className) {
-                if (value) {
-                    this.classList.add(className);
-                } else {
-                    this.classList.remove(className);
-                }
-            }
-        })
+        model: new BindPlugin(model, bindPluginExtra)
     });
 
     this.render = function render(view) {

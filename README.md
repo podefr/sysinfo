@@ -24,7 +24,7 @@ Create a simple web application that monitors load average on your machine:
 
 ### Prerequisites
 
-- node.js 5.8.0+
+- node.js 5.8.0+ (should work on node.js 4.x.x+)
 - recent Chrome (tested on Canary 51)
 
 ### Running the application
@@ -37,10 +37,10 @@ The application is composed of two modules. There's a lot to read in the respect
 They are developed to be installed on separate machines, but to make things easier, they can be installed and executed on the same machine using `npm` scripts:
 
 1. `npm install` in this directory will recursively install `agent/`, `server/` and `web/` by pulling all the dependencies
-2. `npm run start-agent` in this directory will the agent on port `8000` by default. This can be configured in the agent's configuration.
+2. `npm run start-agent` in this directory will run the agent on port `8000` by default. This can be configured in the agent's configuration.
 3. `npm run start-server` in this directory will run the web server on port `8001`. This can be configured in the server's configuration.
-
-When both have started, you will be able to load your browser and navigate to `http://localhost:8001`
+4. `npm run start-webapp` in this directory will simply open your default browser on `http://localhost:8001`. Note that only Chrome Canary 51 was tested.
+ You can also manually navigate to `http://localhost:8001` in your favorite browser.
 
 ## Modules
 

@@ -46,7 +46,6 @@
                         <span data-model="bind:getCpuSpeed, CPUS"></span>
                     </li>
 
-
                     <li>
                         CPU Count
                         <span data-model="bind:getCpuCount, CPUS"></span>
@@ -68,13 +67,13 @@
                         <li data-model="bind:className, type">
                             <span class="on-raised">
                                 High load generated an alert - load =
-                                <em data-model="bind:innerText, load"></em>
+                                <em data-model="bind:formatNumber, load"></em>
                                     triggered at
-                                <em data-model="bind:innerText, time"></em>
+                                <em data-model="bind:formatTime, time"></em>
                             </span>
                             <span class="on-cleared">
                                 The previous alert was cleared at
-                                <em data-model="bind:innerText, time"></em>
+                                <em data-model="bind:formatTime, time"></em>
                             </span>
                         </li>
                     </ul>
