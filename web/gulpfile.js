@@ -84,7 +84,10 @@ gulp.task("sass", () => {
 });
 
 gulp.task("sass:watch", () => {
-    return gulp.watch("src/**/*.scss", ["sass"]);
+    return gulp.watch([
+            "src/**/*.scss",
+            "modules/**/*.scss"
+            ], ["sass"]);
 });
 
 gulp.task("lint", () => {

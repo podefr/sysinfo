@@ -1,3 +1,36 @@
 [data-module="loadavg"] {
+  .alerts, .load-averages {
+    display: inline-block;
+    vertical-align: top;
+  }
 
+  .alerts {
+    margin-left: 20px;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      padding: 5px;
+      border-radius: 2px;
+      font-size: 20px;
+      color: white;
+
+      &.raised {
+        background-color: #990000;
+      }
+
+      &.lifted {
+        background-color: #006600;
+      }
+
+      &:not(:first-child) {
+        color: inherit;
+        opacity: .5;
+      }
+    }
+  }
 }

@@ -5,29 +5,34 @@
         <link rel="stylesheet" href="assets/index.css">
     </head>
     <body>
-        <h1>Welcome to Cerberus</h1>
+        <h1>Cerberus • System monitoring</h1>
 
         <section data-modules="general">
-
+            <div>
+                <h2>General system information</h2>
+            </div>
         </section>
 
         <section data-module="cpu">
-
+            <div>
+                <h2>Data about your CPU</h2>
+            </div>
         </section>
 
         <section data-module="loadavg">
-            <h2>Load averages over the past 10 minutes</h2>
+            <div>
+                <h2>Load averages over the past 10 minutes</h2>
+                <div class="load-averages">
+                </div>
 
-            <div class="load-averages">
-            </div>
-
-            <div class="alerts">
-                <h3>Alerts</h3>
-                <ul>
-                    <li class="raised">High load generated an alert - load = 1.54, triggered at 00:12:30</li>
-                    <li class="lifted">The previous alert was lifted</li>
-                    <li class="raised">High load generated an alert - load = 1.35, triggered at 23:22:21</li>
-                </ul>
+                <div class="alerts">
+                    <h3>Alerts</h3>
+                    <ul>
+                        <li class="raised">High load generated an alert - load = 1.54, triggered at 00:12:30</li>
+                        <li class="lifted">The previous alert was lifted</li>
+                        <li class="raised">High load generated an alert - load = 1.35, triggered at 23:22:21</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
