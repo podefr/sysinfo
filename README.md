@@ -72,7 +72,7 @@ The application is running on `node.js` and `ES6` is used where possible.
 It's using `socket.io` for communication between `agent`, `server` and `webclient`.
 The `server` is using `express` to route `REST` calls.
 The `webclient` is using `D3` for charting and the `Olives and Emily` MVC framework that I've also authored.
-It's using `moment` for data manipulation and `Bacon.js` for streams.
+It's using `moment` for date manipulation and `Bacon.js` for streams.
 
 ## Dev process
 
