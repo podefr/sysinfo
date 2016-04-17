@@ -36,8 +36,9 @@ The application is composed of two modules. There's a lot to read in the respect
 
 They are developed to be installed on separate machines, but to make things easier, they can be installed and executed on the same machine using `npm` scripts:
 
-1. `npm install` in this directory will recursively install `agent/` and `server/` by pulling the dependencies
-2. `npm run start` in this directory will recursively start both the agent and the server on port `localhost:8000`. The url and port can be configured in each application's folder.
+1. `npm install` in this directory will recursively install `agent/`, `server/` and `web/` by pulling all the dependencies
+2. `npm run start-agent` in this directory will the agent on port `8000` by default. This can be configured in the agent's configuration.
+3. `npm run start-server` in this directory will run the web server on port `8001`. This can be configured in the server's configuration.
 
 When both have started, you will be able to load your browser and navigate to `http://localhost:8001`
 

@@ -7,8 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "cd agent/; npm run start; cd ../server/; npm run start &",
-    "install": "cd agent/; npm install; cd ../server/; npm install",
+    "start-agent": "cd agent/; npm run start",
+    "start-server": "cd server/; npm run start",
+    "install": "cd agent/; npm install; cd ../server/; npm install; cd ../web/; npm install",
     "test": "jasmine-node . --verbose"
   },
   "keywords": [
