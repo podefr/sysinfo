@@ -17,8 +17,8 @@
  - [X] WEBAPP-01 Bootstrap webapp, add package.json, install scripts
  - [X] WEBAPP-02 Install dev environment including css preprocessor, test frameworks and dependencies
  - [X] WEBAPP-03 Add index.html, initialize framework
- - [ ] WEBAPP-04 Install and render load average component
- - [ ] WEBAPP-04 Install and render alerts component
+ - [X] WEBAPP-04 Install and render load average component
+ - [X] WEBAPP-04 Install and render alerts component
  - [ ] WEBAPP-05 Render notifications when a new alerts come in
  
 ## [Framework]
@@ -28,13 +28,13 @@
  - [ ] FRAMEWORK-04 Add inter-component communication
 
 ## [UI]
- - [ ] UI-01 Create reusable line chart with default CSS
+ - [X] UI-01 Create reusable line chart with default CSS
  - [ ] UI-02 Create reusable notification with default CSS
- - [ ] UI-03 Create reusable list with default CSS
+ - [X] UI-03 Create reusable list with default CSS
  - [ ] UI-04 Create reusable bar chart with default CSS
 
 ## [LOADAVG]
- - [ ] LOADAVG-01 Bootstrap load average module to render a line chart with the historical load average
+ - [X] LOADAVG-01 Bootstrap load average module to render a line chart with the historical load average
  - [ ] LOADAVG-02 Open API for external components to highlight a zone of the chart on demand
  
 ## [ALERTS]

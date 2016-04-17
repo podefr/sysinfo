@@ -27,7 +27,9 @@ module.exports = {
     },
 
     getAlerts: function getAlerts(request, response) {
-        response.send(alertsStore.get());
+        let count = +request.query.count;
+
+        response.send(alertsStore.get(count));
     },
 
     getLoadAverages: function getLoadAverages(request, response) {

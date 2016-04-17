@@ -30,7 +30,7 @@ module.exports = function LoadAverages(cerberusAPI) {
         _lineChart.render(dom);
     };
 
-    this.update = function update(update) {
+    this.setSnapshot = function setSnapshot(update) {
         _lineChart.update(update.map(transformForChart));
         _lineChart.updateXDomain([
             new Date(moment().subtract(_timeWindow.number, _timeWindow.unit)),

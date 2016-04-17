@@ -1,17 +1,22 @@
 "use strict";
 
-module.exports = function LoadAverages(cerberusAPI) {
-  this.init = function init(options) {
-  };
+const Store = require("emily").Store;
 
-  this.render = function render() {
-  };
+module.exports = function Alerts(cerberusAPI) {
+    const _alertsStore = new Store([]);
+    let _list;
 
-  this.setSnapshot = function setSnapshot() {
+    this.init = function init() {
+        const List = cerberusAPI.getUIElement("list");
 
-  };
+        _list = new List(_alertsStore);
+    };
 
-  this.update = function update() {
+    this.render = function render(dom) {
+        _list.render(dom);
+    };
 
-  };
+    this.setSnapshot = function setSnapshot(snapshot) {
+        _alertsStore.reset(snapshot.reverse());
+    };
 };

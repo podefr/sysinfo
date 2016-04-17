@@ -3,7 +3,7 @@
   "description": "Renders load average over a period of time",
   "entry": "index.js",
   "cerberus": {
-    "UIElements": ["lineChart"],
+    "UIElements": ["lineChart", "list"],
     "routes": ["loadavg"],
     "exposes": []
   },
@@ -12,6 +12,7 @@
       "number": 10,
       "unit": "minutes"
     },
+    "alertsCount": 10,
     "chartDimensions": {
       "width": 600,
       "height": 400

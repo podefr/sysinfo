@@ -5,7 +5,8 @@ const cerberusAPI = require("./cerberusAPI.js");
 // UIElements and modules are preloaded to help the build but they shouldn't be,
 // See web/README.md and docs/FEATURESREQUESTS.md.
 const preloadedUIElements = {
-  "lineChart": require("../ui/lineChart/index")
+  "lineChart": require("../ui/lineChart/index"),
+  "list": require("../ui/list/index")
 };
 
 const preloadedModules = {

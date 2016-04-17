@@ -5,28 +5,37 @@
     stroke: black;
     stroke-width: 2px; }
 
+.ui-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .ui-list li {
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 20px;
+    color: white;
+    background-color: #468847; }
+
 [data-module="loadavg"] .alerts, [data-module="loadavg"] .load-averages {
   display: inline-block;
   vertical-align: top; }
 
-[data-module="loadavg"] .alerts {
-  margin-left: 20px; }
-  [data-module="loadavg"] .alerts ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-  [data-module="loadavg"] .alerts li {
-    padding: 5px;
-    border-radius: 2px;
-    font-size: 20px;
-    color: white; }
-    [data-module="loadavg"] .alerts li.raised {
-      background-color: #990000; }
-    [data-module="loadavg"] .alerts li.lifted {
-      background-color: #006600; }
-    [data-module="loadavg"] .alerts li:not(:first-child) {
-      color: inherit;
-      opacity: .5; }
+[data-module="loadavg"] .load-averages {
+  margin-right: 20px; }
+
+[data-module="loadavg"] .alerts li.ALERT_RAISED {
+  background-color: #990000; }
+  [data-module="loadavg"] .alerts li.ALERT_RAISED .on-cleared {
+    display: none; }
+
+[data-module="loadavg"] .alerts li.ALERT_CLEARED {
+  background-color: #006600; }
+  [data-module="loadavg"] .alerts li.ALERT_CLEARED .on-raised {
+    display: none; }
+
+[data-module="loadavg"] .alerts li:not(:first-child) {
+  color: inherit;
+  opacity: .5; }
 
 body {
   background-color: #393939;

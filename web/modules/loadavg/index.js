@@ -34,19 +34,28 @@ module.exports = {
     },
 
     getSnapshots: function getSnapshots() {
-        getLoadAverages().then(loadAverages.update);
-        alerts.setSnapshot([]);
+        getLoadAverages().then(loadAverages.setSnapshot);
+        getAlerts().then(alerts.setSnapshot);
     },
 
     subscribeToUpdates: function subscribeToUpdates() {
-        cerberusAPI.getSocket("loadavg").on("current", _ => {
-            getLoadAverages().then(loadAverages.update);
+        const loadavgSocket = cerberusAPI.getSocket("loadavg");
+
+        loadavgSocket.on("current", _ => {
+            getLoadAverages().then(loadAverages.setSnapshot);
         });
 
-        alerts.update();
+        loadavgSocket.on("alert", _ => {
+            getAlerts().then(alerts.setSnapshot);
+        });
+
     }
 };
 
 function getLoadAverages() {
     return cerberusAPI.getJSON("loadavg", "get-load-averages", configuration.timeWindow);
+}
+
+function getAlerts() {
+    return cerberusAPI.getJSON("loadavg", "get-alerts", configuration.alertsCount);
 }

@@ -27,10 +27,20 @@
 
                 <div class="alerts">
                     <h3>Alerts</h3>
-                    <ul>
-                        <li class="raised">High load generated an alert - load = 1.54, triggered at 00:12:30</li>
-                        <li class="lifted">The previous alert was lifted</li>
-                        <li class="raised">High load generated an alert - load = 1.35, triggered at 23:22:21</li>
+                    <ul class="ui-list"
+                        data-model="foreach">
+                        <li data-model="bind:className, type">
+                            <span class="on-raised">
+                                High load generated an alert - load =
+                                <em data-model="bind:innerText, load"></em>
+                                    triggered at
+                                <em data-model="bind:innerText, time"></em>
+                            </span>
+                            <span class="on-cleared">
+                                The previous alert was cleared at
+                                <em data-model="bind:innerText, time"></em>
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>

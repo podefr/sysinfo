@@ -4,27 +4,26 @@
     vertical-align: top;
   }
 
+  .load-averages {
+    margin-right: 20px;
+  }
+
   .alerts {
-    margin-left: 20px;
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
     li {
-      padding: 5px;
-      border-radius: 2px;
-      font-size: 20px;
-      color: white;
-
-      &.raised {
+      &.ALERT_RAISED {
         background-color: #990000;
+
+        .on-cleared {
+          display: none;
+        }
       }
 
-      &.lifted {
+      &.ALERT_CLEARED {
         background-color: #006600;
+
+        .on-raised {
+          display: none;
+        }
       }
 
       &:not(:first-child) {
