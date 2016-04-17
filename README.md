@@ -41,13 +41,27 @@ They are developed to be installed on separate machines, but to make things easi
 
 When both have started, you will be able to load your browser and navigate to `http://localhost:8000`
 
+### Modules
+
+#### loadavg
+
+Load average is composed of to elements:
+ - The graph which displays a sliding window of load averages over a period of 10 minutes, refreshed every 10 seconds.
+ - A list of triggered alerts. An alerts is triggered when the load exceeds 1 over a period of 2 minutes. Then it triggers another alert when the load goes below 1.
+
+#### connectivity
+
+A very simple module that show the basic of how to add an application. It has an `agent` counterpart that just sends pings,
+a server counterpart that monitors the multiplexed socket, and a `web` module that displays a splash screen when the connectivity
+between the agent and the server is lost. To try it, simply kill the `agent` process and restart it.
+
 ### Tech stack
 
 The application is running on `node.js` and `ES6` is used where possible.
 
 It's using `socket.io` for communication between `agent`, `server` and `webclient`.
 The `server` is using `express` to route `REST` calls.
-The `webclient` is using `D3` for charting and the `Olives` MVC framework that I've also authored.
+The `webclient` is using `D3` for charting and the `Olives and Emily` MVC framework that I've also authored.
 It's using `moment` for data manipulation and `Bacon.js` for streams.
 
 

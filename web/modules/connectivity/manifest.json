@@ -1,0 +1,11 @@
+{
+  "name": "connectivity",
+  "description": "Displays important information about the application's connectivity",
+  "entry": "index.js",
+  "cerberus": {
+    "UIElements": [],
+    "routes": ["connectivity"],
+    "exposes": []
+  },
+  "configuration": {}
+}

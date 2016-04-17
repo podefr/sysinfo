@@ -38,3 +38,11 @@ Example manifest:
   }
 }
 ```
+
+### Telling Cerberus to load the module
+
+In theory, we would just have to add the module in Cerberus' configuration. To do that, add the module to `cerberus.conf.json`.
+
+Unfortunately, since Cerberus doesn't dynamically load the module at this point, we also need to preload it. Go to `src/cerberus/index.js` 
+and add your module to `preloadedModules`, following the pattern used for other modules.
+

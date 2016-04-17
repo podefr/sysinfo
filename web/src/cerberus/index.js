@@ -13,7 +13,11 @@ const preloadedModules = {
   "loadavg": {
       "manifest": require("../../modules/loadavg/manifest.json"),
       "module": require("../../modules/loadavg/index.js")
-  }
+  },
+    "connectivity": {
+        "manifest": require("../../modules/connectivity/manifest.json"),
+        "module": require("../../modules/connectivity/index.js")
+    }
 };
 
 let configuration;

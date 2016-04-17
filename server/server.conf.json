@@ -10,7 +10,8 @@
       "loadavg": {
         "THRESHOLD": 1,
         "TIME_WINDOW": [2, "minutes"]
-      }
+      },
+      "connectivity": {}
     }
 
   }

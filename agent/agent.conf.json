@@ -5,6 +5,9 @@
       "configuration": {
         "POLLING_FREQUENCY_S": 10
       }
+    },
+    "connectivity": {
+
     }
   }
 }

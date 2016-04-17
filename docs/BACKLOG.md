@@ -38,9 +38,12 @@
  - [ ] LOADAVG-02 Open API for external components to highlight a zone of the chart on demand
  
 ## [ALERTS]
- - [ ] ALERTS-01 Render list of alerts when load average is above 1 or gets back to normal
+ - [X] ALERTS-01 Render list of alerts when load average is above 1 or gets back to normal
  - [ ] ALERTS-02 Display notification when a new alert comes in
  - [ ] ALERTS-03 Request load average to highlight a zone when hovering over a specific alert
+ 
+## [CONNECTIVITY]
+ - [X] CONNECTIVITY-01 Render a splash screen when the server loses the connectivity with the agent
  
 ## [RESPONSIVE]
  - [ ] RESPONSIVE-01 Add tabs to toggle between alerts and load average chart when window size reduces

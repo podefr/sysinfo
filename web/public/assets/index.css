@@ -37,6 +37,22 @@
   color: inherit;
   opacity: .5; }
 
+[data-module="connectivity"] .splash-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column; }
+  [data-module="connectivity"] .splash-screen.hide {
+    display: none; }
+
 body {
   background-color: #393939;
   color: #bababb;

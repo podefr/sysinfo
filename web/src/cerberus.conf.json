@@ -1,7 +1,8 @@
 {
   "title": "Cerberus - System monitoring",
   "modules": {
-    "loadavg": "../modules/loadavg/"
+    "loadavg": "../modules/loadavg/",
+    "connectivity": "../modules/connectivity"
   },
   "UIElements": ["lineChart"]
 }
