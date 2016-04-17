@@ -13,12 +13,14 @@ module.exports = {
         cerberusAPI = _cerberusAPI;
         configuration = _configuration;
 
-        this.initializeUIElements();
-        this.getSnapshots();
-        this.subscribeToUpdates();
+        this.getCpuCount().then((cpuCount) => {
+            this.initializeUIElements(cpuCount);
+            this.getSnapshots();
+            this.subscribeToUpdates();
+        });
     },
 
-    initializeUIElements: function initializeUIElements() {
+    initializeUIElements: function initializeUIElements(cpuCount) {
         const dom = cerberusAPI.getDom();
 
         alerts = new Alerts(cerberusAPI);
@@ -28,6 +30,7 @@ module.exports = {
 
         loadAverages = new LoadAverages(cerberusAPI);
         loadAverages.init();
+        loadAverages.setCpuCount(cpuCount);
         loadAverages.setTimeWindow(configuration.timeWindow);
         loadAverages.setDimensions(configuration.chartDimensions);
         loadAverages.render(dom.querySelector(".load-averages"));
@@ -49,6 +52,14 @@ module.exports = {
             getAlerts().then(alerts.setSnapshot);
         });
 
+    },
+
+    getCpuCount: function getCpuCount() {
+        return cerberusAPI
+            .getJSON("sysinfo", "get-all-info")
+            .then((allInfo) => {
+                return allInfo.CPUS.length;
+            });
     }
 };
 

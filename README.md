@@ -47,7 +47,8 @@ They are developed to be installed on separate machines, but to make things easi
 #### loadavg
 
 Load average is composed of two elements:
- - The graph which displays a sliding window of load averages over a period of 10 minutes, refreshed every 10 seconds.
+ - The graph which displays a sliding window of load averages over a period of 10 minutes, refreshed every 10 seconds. The Y axis is the number of CPUs since it's a decent
+ measure to compare the current load average against.
  - A list of triggered alerts. An alerts is triggered when the load exceeds 1 over a period of 2 minutes. Then it triggers another alert when the load goes below 1.
 
 #### connectivity

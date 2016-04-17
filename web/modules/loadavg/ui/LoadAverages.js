@@ -6,6 +6,7 @@ const moment = require("moment");
 module.exports = function LoadAverages(cerberusAPI) {
     let _lineChart;
     let _timeWindow;
+    let _cpuCount;
     let _height;
     let _width;
 
@@ -21,6 +22,10 @@ module.exports = function LoadAverages(cerberusAPI) {
     this.setDimensions = function setDimensions(dimensions) {
         _width = dimensions.width;
         _height = dimensions.height;
+    };
+
+    this.setCpuCount = function setCpuCount(cpuCount) {
+        _cpuCount = cpuCount;
     };
 
     this.render = function render(dom) {
@@ -49,7 +54,7 @@ module.exports = function LoadAverages(cerberusAPI) {
 
     function createYScale() {
         return d3.scale.linear()
-            .domain([8, 0])
+            .domain([_cpuCount, 0])
             .range([0, _height]);
     }
 

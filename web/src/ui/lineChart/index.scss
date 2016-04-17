@@ -6,4 +6,10 @@
     stroke: black;
     stroke-width: 2px;
   }
+
+  .axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdge;
+  }
 }

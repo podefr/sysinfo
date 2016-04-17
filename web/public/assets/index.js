@@ -50,12 +50,14 @@ module.exports = {
         cerberusAPI = _cerberusAPI;
         configuration = _configuration;
 
-        this.initializeUIElements();
-        this.getSnapshots();
-        this.subscribeToUpdates();
+        this.getCpuCount().then((cpuCount) => {
+            this.initializeUIElements(cpuCount);
+            this.getSnapshots();
+            this.subscribeToUpdates();
+        });
     },
 
-    initializeUIElements: function initializeUIElements() {
+    initializeUIElements: function initializeUIElements(cpuCount) {
         const dom = cerberusAPI.getDom();
 
         alerts = new Alerts(cerberusAPI);
@@ -65,6 +67,7 @@ module.exports = {
 
         loadAverages = new LoadAverages(cerberusAPI);
         loadAverages.init();
+        loadAverages.setCpuCount(cpuCount);
         loadAverages.setTimeWindow(configuration.timeWindow);
         loadAverages.setDimensions(configuration.chartDimensions);
         loadAverages.render(dom.querySelector(".load-averages"));
@@ -86,6 +89,14 @@ module.exports = {
             getAlerts().then(alerts.setSnapshot);
         });
 
+    },
+
+    getCpuCount: function getCpuCount() {
+        return cerberusAPI
+            .getJSON("sysinfo", "get-all-info")
+            .then((allInfo) => {
+                return allInfo.CPUS.length;
+            });
     }
 };
 
@@ -103,7 +114,7 @@ module.exports={
   "entry": "index.js",
   "cerberus": {
     "UIElements": ["lineChart", "list"],
-    "routes": ["loadavg"],
+    "routes": ["loadavg", "sysinfo"],
     "exposes": []
   },
   "configuration": {
@@ -150,6 +161,7 @@ const moment = require("moment");
 module.exports = function LoadAverages(cerberusAPI) {
     let _lineChart;
     let _timeWindow;
+    let _cpuCount;
     let _height;
     let _width;
 
@@ -165,6 +177,10 @@ module.exports = function LoadAverages(cerberusAPI) {
     this.setDimensions = function setDimensions(dimensions) {
         _width = dimensions.width;
         _height = dimensions.height;
+    };
+
+    this.setCpuCount = function setCpuCount(cpuCount) {
+        _cpuCount = cpuCount;
     };
 
     this.render = function render(dom) {
@@ -193,7 +209,7 @@ module.exports = function LoadAverages(cerberusAPI) {
 
     function createYScale() {
         return d3.scale.linear()
-            .domain([8, 0])
+            .domain([_cpuCount, 0])
             .range([0, _height]);
     }
 

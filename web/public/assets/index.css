@@ -4,6 +4,10 @@
     fill: none;
     stroke: black;
     stroke-width: 2px; }
+  .ui-line-chart .axis path, .ui-line-chart .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdge; }
 
 .ui-list {
   list-style-type: none;
