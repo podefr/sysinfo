@@ -1,6 +1,6 @@
 # FEATURE REQUESTS
 
-List of future features
+List of request features
 
 - Export load average data to .CSV file for a given time period
 - Load previously exported data from .CSV file for visualization

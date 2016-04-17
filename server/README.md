@@ -6,12 +6,21 @@ From `server/` run `npm run start`. You should see:
  
 ```
 Starting server
-Starting loadavg
-got load average [ '1.54', '1.60', '1.58' ]
-got load average [ '1.54', '1.60', '1.58' ]
+Web server running on http://localhost:8001
+loadavg started
+connectivity started
+loadavg is connected
+connectivity is connected
+{ loadAverage: [ 1.3, 1.43, 1.57 ],
+  time: '2016-04-17T08:22:56.191Z' }
+Accepted new connection from web client
+Accepted new connection from web client
+{ loadAverage: [ 1.41, 1.44, 1.58 ],
+  time: '2016-04-17T08:23:05.817Z' }
+{ loadAverage: [ 1.49, 1.46, 1.58 ],
 ````
 
-The server runs on port 8000 by default, it can be edited in the configuration file.
+The web server runs on port 8001 by default, it can be edited in the configuration file.
 
 ## Configuration
 

@@ -39,19 +39,19 @@ They are developed to be installed on separate machines, but to make things easi
 1. `npm install` in this directory will recursively install `agent/` and `server/` by pulling the dependencies
 2. `npm run start` in this directory will recursively start both the agent and the server on port `localhost:8000`. The url and port can be configured in each application's folder.
 
-When both have started, you will be able to load your browser and navigate to `http://localhost:8000`
+When both have started, you will be able to load your browser and navigate to `http://localhost:8001`
 
 ### Modules
 
 #### loadavg
 
-Load average is composed of to elements:
+Load average is composed of two elements:
  - The graph which displays a sliding window of load averages over a period of 10 minutes, refreshed every 10 seconds.
  - A list of triggered alerts. An alerts is triggered when the load exceeds 1 over a period of 2 minutes. Then it triggers another alert when the load goes below 1.
 
 #### connectivity
 
-A very simple module that show the basic of how to add an application. It has an `agent` counterpart that just sends pings,
+A very simple module that shows the basics of how to add an application. It has an `agent` counterpart that just sends pings,
 a server counterpart that monitors the multiplexed socket, and a `web` module that displays a splash screen when the connectivity
 between the agent and the server is lost. To try it, simply kill the `agent` process and restart it.
 
