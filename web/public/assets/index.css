@@ -12,7 +12,6 @@
   .ui-list li {
     padding: 5px;
     border-radius: 2px;
-    font-size: 20px;
     color: white;
     background-color: #468847; }
 
@@ -23,19 +22,19 @@
 [data-module="loadavg"] .load-averages {
   margin-right: 20px; }
 
-[data-module="loadavg"] .alerts li.ALERT_RAISED {
-  background-color: #990000; }
-  [data-module="loadavg"] .alerts li.ALERT_RAISED .on-cleared {
-    display: none; }
-
-[data-module="loadavg"] .alerts li.ALERT_CLEARED {
-  background-color: #006600; }
-  [data-module="loadavg"] .alerts li.ALERT_CLEARED .on-raised {
-    display: none; }
-
-[data-module="loadavg"] .alerts li:not(:first-child) {
-  color: inherit;
-  opacity: .5; }
+[data-module="loadavg"] .alerts {
+  font-size: 15px; }
+  [data-module="loadavg"] .alerts li.ALERT_RAISED {
+    background-color: #990000; }
+    [data-module="loadavg"] .alerts li.ALERT_RAISED .on-cleared {
+      display: none; }
+  [data-module="loadavg"] .alerts li.ALERT_CLEARED {
+    background-color: #006600; }
+    [data-module="loadavg"] .alerts li.ALERT_CLEARED .on-raised {
+      display: none; }
+  [data-module="loadavg"] .alerts li:not(:first-child) {
+    color: inherit;
+    opacity: .5; }
 
 [data-module="connectivity"] .splash-screen {
   position: absolute;
