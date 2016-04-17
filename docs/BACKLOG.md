@@ -58,3 +58,4 @@
  - [ ] TECHDEBT-03 Remove hard coded preloading of modules and UIElements and make it based on the configuration
  - [ ] DEFECT-02 using moment() makes the alerts.spec.js brittle and they may sometimes fail.
  - [ ] TECHDEBT-04 Make sure Cerberus only exposes to other modules the module's methods that are exposed in the manifest.
+ - [ ] DEFECT-03 Fix the gulp build: Make watches more efficient, fix the karma test runner...
