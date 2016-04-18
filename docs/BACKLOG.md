@@ -60,5 +60,5 @@
  - [ ] TECHDEBT-04 Make sure Cerberus only exposes to other modules the module's methods that are exposed in the manifest.
  - [ ] DEFECT-03 Fix the gulp build: Make watches more efficient, fix the karma test runner...
  - [ ] DEFECT-04 Add babel so that other browsers can also run the application
- - [ ] TECHDEBT-05 LineChart should rewritten to make it clearer what the various components to make them more visible
+ - [ ] TECHDEBT-05 LineChart should be rewritten to make it clearer what the various components are to make them more visible
         and make their lifecycle more explicit.

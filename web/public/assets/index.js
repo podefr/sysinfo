@@ -80529,6 +80529,7 @@ module.exports = function LineChart() {
 
     let _width;
     let _height;
+    let _padding = 40;
 
     let _data = [];
 
@@ -80582,7 +80583,7 @@ module.exports = function LineChart() {
             .attr("class", "line");
 
         _rulerPath = _svg.append("svg:path")
-            .attr("class", "line hide ui-line-chart-ruler")
+            .attr("class", "line hide ui-line-chart-ruler");
 
         _addAxes();
         _render();
@@ -80594,22 +80595,28 @@ module.exports = function LineChart() {
     }
 
     function _onMouseMove(event) {
-        if (event.clientX < 60 || event.clientX > 660) {
+        const clientRects = getSVGRect(this);
+
+        let relativeX = event.clientX - clientRects.left;
+        let relativeY = event.clientY - clientRects.top;
+
+        if (relativeX < _padding || relativeX > clientRects.width - _padding ||
+            relativeY < _padding || relativeY > clientRects.width - _padding) {
             return;
         }
         _rulerPath.classed("hide", false);
         _legend.classed("hide", false);
 
-        let invertedX = _xScale.invert(event.clientX - 60);
+        let invertedX = _xScale.invert(relativeX - _padding);
         let minY = _yScale.domain()[0];
         let maxY = _yScale.domain()[1];
 
         _rulerPath.attr("d", _verticalLine([[invertedX, maxY], [invertedX, minY]]));
 
         _legend
-            .attr("x", event.clientX - 50)
-            .attr("y", event.clientY - 300)
-            .text("2.33");
+            .attr("x", relativeX - 20)
+            .attr("y", relativeY - _padding - 20)
+            .text(_yScale.invert(relativeY - _padding).toFixed(2));
     }
 
     function _onMouseOut() {
@@ -80617,14 +80624,24 @@ module.exports = function LineChart() {
         _legend.classed("hide", true);
     }
 
+    function getSVGRect(dom) {
+        return dom.querySelector("svg").getClientRects()[0];
+    }
+
     function _addAxes() {
         _xAxis = d3.svg.axis()
             .scale(_xScale)
-            .orient("bottom");
+            .orient("bottom")
+            .innerTickSize(-_height)
+            .outerTickSize(0)
+            .tickPadding(10);
 
         let yAxis = d3.svg.axis()
             .scale(_yScale)
-            .orient("left");
+            .orient("left")
+            .innerTickSize(-_width)
+            .outerTickSize(0)
+            .tickPadding(10);
 
         _svg.append("svg:g")
             .attr("class", "x axis")

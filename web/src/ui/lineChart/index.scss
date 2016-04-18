@@ -18,12 +18,23 @@
   .ui-line-chart-ruler {
     stroke-width: 1px;
     stroke: $grey-ramp10;
-    shape-rendering: crispEdge;
+    shape-rendering: crispEdges;
   }
 
   .axis path, .axis line {
     fill: none;
     stroke: black;
-    shape-rendering: crispEdge;
+  }
+
+  .axis {
+    shape-rendering: crispEdges;
+
+    &.x .tick {
+        stroke-dasharray: 2, 2;
+      }
+
+    &.y .tick {
+      stroke-width: 1px;
+    }
   }
 }

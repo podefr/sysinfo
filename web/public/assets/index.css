@@ -11,11 +11,16 @@
   .ui-line-chart .ui-line-chart-ruler {
     stroke-width: 1px;
     stroke: #393939;
-    shape-rendering: crispEdge; }
+    shape-rendering: crispEdges; }
   .ui-line-chart .axis path, .ui-line-chart .axis line {
     fill: none;
-    stroke: black;
-    shape-rendering: crispEdge; }
+    stroke: black; }
+  .ui-line-chart .axis {
+    shape-rendering: crispEdges; }
+    .ui-line-chart .axis.x .tick {
+      stroke-dasharray: 2, 2; }
+    .ui-line-chart .axis.y .tick {
+      stroke-width: 1px; }
 
 .ui-list {
   list-style-type: none;
