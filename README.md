@@ -1,8 +1,8 @@
 # Sytem information Web Application
 
-## Requirements:
+## What this is:
 
-Create a simple web application that monitors load average on your machine:
+A simple web application that monitors load average on your machine:
 
 - Collects the machine load using "uptime"
 - Displays the key statistics as well as a history of load over the past 10 minutes in 10s intervals. 
