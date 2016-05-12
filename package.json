@@ -1,7 +1,7 @@
 {
-  "name": "datadog-coding-challenge",
+  "name": "sysinfo",
   "version": "0.0.1-alpha",
-  "description": "Take home coding challenge for Datadog",
+  "description": "Simple application to display basic system information",
   "main": "README.md",
   "directories": {
     "doc": "docs"
@@ -13,9 +13,10 @@
     "test": "jasmine-node . --verbose"
   },
   "keywords": [
-    "datadog",
-    "coding",
-    "challenge"
+    "system",
+    "information",
+    "load",
+    "average"
   ],
   "eslintConfig": {
     "root": true,

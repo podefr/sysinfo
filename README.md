@@ -1,17 +1,14 @@
-# Load Monitoring Web Application
+# Sytem information Web Application
 
 ## Requirements:
 
 Create a simple web application that monitors load average on your machine:
 
-- [DONE] Collect the machine load (using “uptime” for example)
-- [DONE] Display in the application the key statistics as well as a history of load over the past 10 minutes in 10s intervals. We’d suggest a graphical representation using D3.js, but feel free to use another tool or representation if you prefer. Make it easy for the end-user to picture the situation!
-- [DONE] Make sure a user can keep the web page open and monitor the load on their machine.
-- [DONE] Whenever the load for the past 2 minutes exceeds 1 on average, add a message saying that “High load generated an alert - load = {value}, triggered at {time}”
-- [DONE] Whenever the load average drops again below 1 on average for the past 2 minutes, Add another message explaining when the alert recovered.
-- [DONE] Make sure all messages showing when alerting thresholds are crossed remain visible on the page for historical reasons.
-- [DONE] Write a test for the alerting logic
-- [DONE see docs/FEATUREREQUESTS.md] Explain how you’d improve on this application design
+- Collects the machine load using "uptime"
+- Displays the key statistics as well as a history of load over the past 10 minutes in 10s intervals. 
+- Whenever the load for the past 2 minutes exceeds 1 on average, a message says that “High load generated an alert - load = {value}, triggered at {time}”
+- Whenever the load average drops again below 1 on average for the past 2 minutes, another message tells when the alert recovered.
+- All messages showing when alerting thresholds are crossed remain visible on the page for historical reasons.
 
 ## In this repository:
 
